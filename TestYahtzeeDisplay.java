@@ -15,6 +15,13 @@ public class TestYahtzeeDisplay extends GraphicsProgram implements YahtzeeConsta
 	}
 	
 	public void waitPlayerToClickRoll(MouseEvent e) {
+		if(e.getSource().toString().equals("Roll Dice")) {
+			
+		} 
+	}
+	
+	public void displayDice(int[] elements) {
+		// draws elements
 		
 	}
 	
