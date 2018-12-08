@@ -1,5 +1,7 @@
 import java.awt.event.MouseEvent;
 
+import javax.swing.JButton;
+
 import acm.graphics.GCanvas;
 import acm.program.GraphicsProgram;
 
@@ -27,7 +29,9 @@ public class TestYahtzeeDisplay extends GraphicsProgram implements YahtzeeConsta
 	
 	public void displayDice(int[] elements) {
 		// draws elements
-		
+		for(int i = 0; i < elements.length; i++) {
+			canvas.add(new JButton());
+		}
 	}
 	
 	
