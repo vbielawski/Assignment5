@@ -1,3 +1,5 @@
+import java.awt.event.MouseEvent;
+
 import acm.graphics.GCanvas;
 import acm.program.GraphicsProgram;
 
@@ -12,7 +14,7 @@ public class TestYahtzeeDisplay extends GraphicsProgram implements YahtzeeConsta
 		this.names = starray;
 	}
 	
-	protected static void waitPlayerToClickRoll() {
+	public void waitPlayerToClickRoll(MouseEvent e) {
 		
 	}
 	
