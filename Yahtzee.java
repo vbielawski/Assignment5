@@ -30,9 +30,9 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 		
 /* Private instance variables */
-	private int nPlayers;
-	private String[] playerNames;
-	private YahtzeeDisplay display;
-	private RandomGenerator rgen = new RandomGenerator();
+	private int nPlayers; // number of players
+	private String[] playerNames; // array of strings containing player names
+	private YahtzeeDisplay display; // instance of the YahtzeeDisplay class
+	private RandomGenerator rgen = new RandomGenerator(); // instance of a random generator
 
 }
