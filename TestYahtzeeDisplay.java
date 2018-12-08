@@ -14,6 +14,11 @@ public class TestYahtzeeDisplay extends GraphicsProgram implements YahtzeeConsta
 		this.names = starray;
 	}
 	
+	public void init() {
+		addMouseListeners();
+		addActionListeners();
+	}
+	
 	public void waitPlayerToClickRoll(MouseEvent e) {
 		if(e.getSource().toString().equals("Roll Dice")) {
 			
