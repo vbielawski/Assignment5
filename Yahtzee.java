@@ -31,11 +31,11 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	
 	private void readPlayers() {
 		IODialog dialog = getDialog();
-		try {
+		while(nPlayers > 4) {
 		nPlayers = dialog.readInt("Enter number of players");
-		} catch(ErrorException e) {
-			dialog.showErrorMessage("No more than 4 players");
 		}
+		
+		
 		playerNames = new String[nPlayers];
 		for (int i = 1; i <= nPlayers; i++) {
 			playerNames[i - 1] = dialog.readLine("Enter name for player " + i);
