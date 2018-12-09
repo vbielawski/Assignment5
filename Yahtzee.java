@@ -34,7 +34,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		try {
 		nPlayers = dialog.readInt("Enter number of players");
 		} catch(ErrorException e) {
-			dialog.print("You have exceeded maximum number of players: 4");
+			dialog.showErrorMessage("No more than 4 players");
 		}
 		playerNames = new String[nPlayers];
 		for (int i = 1; i <= nPlayers; i++) {
