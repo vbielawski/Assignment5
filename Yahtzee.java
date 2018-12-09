@@ -1,3 +1,4 @@
+
 /*
  * File: Yahtzee.java
  * ------------------
@@ -11,34 +12,29 @@ import acm.program.*;
 import acm.util.*;
 
 public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
-	
+
 	public static void main(String[] args) {
 		new Yahtzee().start(args);
 	}
-	
+
 	public void run() {
-		
+
 		readPlayers();
 		display = new YahtzeeDisplay(getGCanvas(), playerNames);
-		
+
 		createDiceArray(N_DICE);
-		System.out.println(Arrays.toString(dice));
-		
 		playGame();
-		TestYahtzeeDisplay test = new TestYahtzeeDisplay(getGCanvas(), playerNames);
-		
+
 	}
-	
+
 	private void readPlayers() {
 		IODialog dialog = getDialog();
-		
+
 		nPlayers = dialog.readInt("Enter number of players");
-		while(nPlayers > MAX_PLAYERS) {
+		while (nPlayers > MAX_PLAYERS) {
 			nPlayers = dialog.readInt("Enter number of players(less/equal to " + MAX_PLAYERS + ")");
 		}
-		
-		
-		
+
 		playerNames = new String[nPlayers];
 		for (int i = 1; i <= nPlayers; i++) {
 			playerNames[i - 1] = dialog.readLine("Enter name for player " + i);
@@ -47,21 +43,21 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 	private void playGame() {
 		/* Play Yahtzee game */
-		
+
 		display.waitForPlayerToClickRoll(nPlayers);
 		display.displayDice(dice);
-		
+
 	}
-	
+
 	private int[] createDiceArray(int size) {
 		dice = new int[size];
-		for(int i = 0; i < size; i++) {
+		for (int i = 0; i < size; i++) {
 			dice[i] = i + 1;
 		}
 		return dice;
 	}
-		
-/* Private instance variables */
+
+	/* Private instance variables */
 	private int nPlayers; // number of players
 	private int[] dice; // array of dice elements
 	private String[] playerNames; // array of strings containing player names
