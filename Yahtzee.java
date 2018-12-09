@@ -24,8 +24,10 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			playerNames[i - 1] = dialog.readLine("Enter name for player " + i);
 		}
 		display = new YahtzeeDisplay(getGCanvas(), playerNames);
+		
 		createDiceArray(N_DICE);
 		System.out.println(Arrays.toString(dice));
+		
 		playGame();
 		TestYahtzeeDisplay test = new TestYahtzeeDisplay(getGCanvas(), playerNames);
 		
@@ -42,7 +44,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private int[] createDiceArray(int size) {
 		dice = new int[size];
 		for(int i = 0; i < size; i++) {
-			dice[i] = i + 1;
+			dice[i] = i + 2;
 		}
 		return dice;
 	}
