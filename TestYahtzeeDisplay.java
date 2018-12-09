@@ -4,6 +4,7 @@ import javax.swing.JButton;
 
 import acm.graphics.GCanvas;
 import acm.program.GraphicsProgram;
+import acm.util.ErrorException;
 
 public class TestYahtzeeDisplay extends GraphicsProgram implements YahtzeeConstants{
 	// Constructor of class
@@ -40,6 +41,7 @@ public class TestYahtzeeDisplay extends GraphicsProgram implements YahtzeeConsta
 		for(int i = 0; i < elements.length; i++) {
 			canvas.add(new JButton());
 		}
+		
 	}
 	
 	public int waitForPlayerToSelectDice(MouseEvent e, int[] dice) {
