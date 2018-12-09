@@ -34,6 +34,34 @@ public class TestYahtzeeDisplay extends GraphicsProgram implements YahtzeeConsta
 		}
 	}
 	
+	public int waitForPlayerToSelectDice(MouseEvent e, int[] dice) {
+		for(int i = 0; i < dice.length; i++) {
+			if(e.equals(e)) {
+				return i;
+			}
+		}
+		return 0;
+	}
+	
+	public boolean isDieSelected(int diceindex) {
+		boolean selected = false;
+		return selected;
+			
+	}
+	
+	public int waitForPlayerToSelectCategory(int player) {
+		return N_CATEGORIES;
+	}
+	
+	public void updateScorecard(int player, int category, int score) {
+		canvas.getGraphics();
+	}
+	
+	public void printMessage(String message) {
+		println(message);
+	}
+	
+	
 	
 	private GCanvas canvas;
 	private String[] names;
