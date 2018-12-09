@@ -44,7 +44,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private int[] createDiceArray(int size) {
 		dice = new int[size];
 		for(int i = 0; i < size; i++) {
-			dice[i] = i + 2;
+			dice[i] = i + 3;
 		}
 		return dice;
 	}
