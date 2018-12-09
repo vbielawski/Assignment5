@@ -30,7 +30,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private void playGame() {
 		/* Play Yahtzee game */
 		
-		display.waitForPlayerToClickRoll(1);
+		display.waitForPlayerToClickRoll(2);
 		
 	}
 		
