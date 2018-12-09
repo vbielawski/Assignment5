@@ -7,6 +7,10 @@ import acm.program.GraphicsProgram;
 
 public class TestYahtzeeDisplay extends GraphicsProgram implements YahtzeeConstants{
 	// Constructor of class
+	/*
+	 * This test class has no use
+	 * all necessary methods are recompiled from yahtzeedisplay
+	 */
 	public TestYahtzeeDisplay() {
 		
 	}
@@ -21,10 +25,14 @@ public class TestYahtzeeDisplay extends GraphicsProgram implements YahtzeeConsta
 		addActionListeners();
 	}
 	
-	public void waitPlayerToClickRoll(MouseEvent e) {
-		if(e.getSource().toString().equals("Roll Dice")) {
-			
-		} 
+	public void waitPlayerToClickRoll(int player) {
+		// for single player, for her turn - argument(player number[1, nPlayers]
+		// mark the player's name in the matrix
+		// clear previous roll results
+		// draw Roll Dice Button again
+		// wait for player to click
+		
+		
 	}
 	
 	public void displayDice(int[] elements) {
@@ -57,9 +65,11 @@ public class TestYahtzeeDisplay extends GraphicsProgram implements YahtzeeConsta
 		canvas.getGraphics();
 	}
 	
-	public void printMessage(String message) {
-		println(message);
+	public void printMessage(String message, String name) {
+		println(name.concat(message));
 	}
+	
+	
 	
 	
 	
