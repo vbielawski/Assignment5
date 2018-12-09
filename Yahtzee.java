@@ -17,12 +17,8 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 	
 	public void run() {
-		IODialog dialog = getDialog();
-		nPlayers = dialog.readInt("Enter number of players");
-		playerNames = new String[nPlayers];
-		for (int i = 1; i <= nPlayers; i++) {
-			playerNames[i - 1] = dialog.readLine("Enter name for player " + i);
-		}
+		
+		readPlayers();
 		display = new YahtzeeDisplay(getGCanvas(), playerNames);
 		
 		createDiceArray(N_DICE);
@@ -31,6 +27,19 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		playGame();
 		TestYahtzeeDisplay test = new TestYahtzeeDisplay(getGCanvas(), playerNames);
 		
+	}
+	
+	private void readPlayers() {
+		IODialog dialog = getDialog();
+		try {
+		nPlayers = dialog.readInt("Enter number of players");
+		} catch(ErrorException e) {
+			dialog.print("You have exceeded maximum number of players: 4");
+		}
+		playerNames = new String[nPlayers];
+		for (int i = 1; i <= nPlayers; i++) {
+			playerNames[i - 1] = dialog.readLine("Enter name for player " + i);
+		}
 	}
 
 	private void playGame() {
