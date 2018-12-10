@@ -1,4 +1,4 @@
 
-public class CategoryChecker {
-
+public class CategoryChecker implements YahtzeeConstants {
+	
 }
