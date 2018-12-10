@@ -22,7 +22,6 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		readPlayers();
 		display = new YahtzeeDisplay(getGCanvas(), playerNames);
 
-		createDiceArray(N_DICE);
 		playGame();
 
 	}
@@ -45,6 +44,8 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		/* Play Yahtzee game */
 
 		display.waitForPlayerToClickRoll(nPlayers);
+		createDiceArray(N_DICE);
+
 		display.displayDice(dice);
 		display.waitForPlayerToSelectDice();
 
