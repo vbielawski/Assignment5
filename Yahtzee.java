@@ -53,7 +53,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private int[] createDiceArray(int size) {
 		dice = new int[size];
 		for (int i = 0; i < size; i++) {
-			dice[i] = i + 1;
+			dice[i] = rgen.nextInt(1, size + 1);
 		}
 		return dice;
 	}
