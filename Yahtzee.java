@@ -49,7 +49,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		display.displayDice(dice);
 		display.waitForPlayerToSelectDice();
 		if(display.isDieSelected(N_DICE)) {
-			println("_________________");
+			//println("_________________");
 		}
 		
 		int category = display.waitForPlayerToSelectCategory();
