@@ -61,7 +61,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private void rollSelected(int[] array) {
 		for (int i = 0; i < array.length; i++)
 			if (display.isDieSelected(i)) {
-				array[i] = rgen.nextInt(1, array.length + 1);
+				array[i] = rgen.nextInt(1, array.length);
 			}
 	}
 
