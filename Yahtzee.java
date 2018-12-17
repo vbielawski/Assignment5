@@ -44,7 +44,8 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 	private void playGame() {
 		/* Play Yahtzee game */
-		dice = generateDice(N_DICE);
+		dice = generateDice(N_DICE); // generate initials points
+		
 		for(int i = 0; i < dice.length; i++) {
 			System.out.println(dice[i]);
 		}
