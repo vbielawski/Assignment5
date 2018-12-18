@@ -22,7 +22,6 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		readPlayers();
 
 		display = new YahtzeeDisplay(getGCanvas(), playerNames);
-		dice = generateDice(N_DICE); // generate initials dice values
 
 		playGame();
 
@@ -46,6 +45,8 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private void playGame() {
 		/* Play Yahtzee game */
 		while (true) {
+			dice = generateDice(N_DICE); // generate initials dice values
+
 			display.waitForPlayerToClickRoll(1);
 			display.displayDice(dice);
 
