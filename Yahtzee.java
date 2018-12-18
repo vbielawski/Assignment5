@@ -61,7 +61,8 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			display.displayDice(dice);
 			
 			int category = display.waitForPlayerToSelectCategory();
-			System.out.println(category);
+			int score = 0;
+			display.updateScorecard(category, 1, score);
 		
 
 	}
