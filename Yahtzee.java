@@ -20,7 +20,9 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	public void run() {
 
 		readPlayers();
+
 		display = new YahtzeeDisplay(getGCanvas(), playerNames);
+		dice = generateDice(N_DICE); // generate initials dice values
 
 		playGame();
 
@@ -43,34 +45,28 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 	private void playGame() {
 		/* Play Yahtzee game */
-		dice = generateDice(N_DICE); // generate initials points
 
-		
-		
-			display.waitForPlayerToClickRoll(1);
-			display.displayDice(dice);
-			
-			display.waitForPlayerToSelectDice();
-			rollSelected(dice);
-			display.displayDice(dice);
-			
-			display.waitForPlayerToSelectDice();
-			rollSelected(dice);
-			display.displayDice(dice);
-			
-			int category = display.waitForPlayerToSelectCategory();
-			System.out.println(category);
-			
-			boolean p = YahtzeeMagicStub.checkCategory(dice, category);
-			System.out.println(p);
-			int score = 0;
-			display.updateScorecard(category, 1, score);
-			
-			
-			
-			String message = "Score = " + score;
-			display.printMessage(message);
-		
+		display.waitForPlayerToClickRoll(1);
+		display.displayDice(dice);
+
+		display.waitForPlayerToSelectDice();
+		rollSelected(dice);
+		display.displayDice(dice);
+
+		display.waitForPlayerToSelectDice();
+		rollSelected(dice);
+		display.displayDice(dice);
+
+		int category = display.waitForPlayerToSelectCategory();
+		System.out.println(category);
+
+		boolean p = YahtzeeMagicStub.checkCategory(dice, category);
+		System.out.println(p);
+		int score = 0;
+		display.updateScorecard(category, 1, score);
+
+		String message = "Score = " + score;
+		display.printMessage(message);
 
 	}
 
