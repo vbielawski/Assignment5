@@ -14,10 +14,10 @@ import acm.util.*;
 public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 	CategoryChecker checker = new CategoryChecker();
-	
+
 	public static void main(String[] args) {
 		new Yahtzee().start(args);
-		
+
 	}
 
 	public void run() {
@@ -48,33 +48,30 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private void playGame() {
 		/* Play Yahtzee game */
 		while (true) {
-			dice = generateDice(N_DICE); // generate initials dice values
+			for (int player = 1; player <= nPlayers; player++) {
+				dice = generateDice(N_DICE); // generate initials dice values
 
-			firstRollCall();
-			for(int i = 0; i < 2; i++) {
-				nextRollsCall();
-			}
+				display.waitForPlayerToClickRoll(player);
+				display.displayDice(dice);
 
-			
+				for (int i = 0; i < 2; i++) {
+					nextRollsCall();
+				}
 
 //			display.waitForPlayerToSelectDice();
 //			rollSelected(dice);
 //			display.displayDice(dice);
 
-			int category = display.waitForPlayerToSelectCategory();
-			int score = 0;
-			display.updateScorecard(category, 1, score);
+				int category = display.waitForPlayerToSelectCategory();
+				int score = 0;
+				display.updateScorecard(category, 1, score);
 
-			String message = "Score = " + score;
-			display.printMessage(message);
+				String message = "Score = " + score;
+				display.printMessage(message);
+			}
 		}
 	}
-	
-	private void firstRollCall() {
-		display.waitForPlayerToClickRoll(1);
-		display.displayDice(dice);
-	}
-	
+
 	private void nextRollsCall() {
 		display.waitForPlayerToSelectDice();
 		rollSelected(dice);
@@ -102,6 +99,5 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private String[] playerNames; // array of strings containing player names
 	private YahtzeeDisplay display; // instance of the YahtzeeDisplay class
 	private RandomGenerator rgen = new RandomGenerator(); // instance of a random generator
-	
 
 }
