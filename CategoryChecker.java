@@ -8,37 +8,37 @@ public class CategoryChecker implements YahtzeeConstants {
 		return true;
 	}
 	
-	private boolean isThreeOfAKind(int[] array, int category) {
+	public boolean isThreeOfAKind(int[] array, int category) {
 		return false;
 		
 	}
 	
-	private boolean isFourOfAKind(int[] array, int category) {
+	public boolean isFourOfAKind(int[] array, int category) {
 		return false;
 		
 	}
 	
-	private boolean isSmallStraight(int[] array, int category) {
+	public boolean isSmallStraight(int[] array, int category) {
 		return false;
 		
 	}
 	
-	private boolean isBigStraight(int[] array, int category) {
+	public boolean isBigStraight(int[] array, int category) {
 		return false;
 		
 	}
 	
-	private boolean isYahtzee(int[] array, int category) {
+	public boolean isYahtzee(int[] array, int category) {
 		return false;
 		
 	}
 	
-	private boolean isChance(int[] array, int category) {
+	public boolean isChance(int[] array, int category) {
 		return true;
 		
 	}
 	
-	private int straightCounter(int[] arr) {
+	public int straightCounter(int[] arr) {
 		return 0;
 	}
 	
