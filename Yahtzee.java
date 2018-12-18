@@ -50,30 +50,35 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		while (true) {
 			dice = generateDice(N_DICE); // generate initials dice values
 
-			display.waitForPlayerToClickRoll(1);
-			display.displayDice(dice);
+			firstRollCall();
+			for(int i = 0; i < 2; i++) {
+				nextRollsCall();
+			}
 
-			display.waitForPlayerToSelectDice();
-			rollSelected(dice);
-			display.displayDice(dice);
+			
 
-			display.waitForPlayerToSelectDice();
-			rollSelected(dice);
-			display.displayDice(dice);
+//			display.waitForPlayerToSelectDice();
+//			rollSelected(dice);
+//			display.displayDice(dice);
 
 			int category = display.waitForPlayerToSelectCategory();
-			System.out.println(category);
-
-			boolean p = YahtzeeMagicStub.checkCategory(dice, category);
-			boolean t = checker.isOneToSix(dice, category);
-			
-			System.out.println(t);
 			int score = 0;
 			display.updateScorecard(category, 1, score);
 
 			String message = "Score = " + score;
 			display.printMessage(message);
 		}
+	}
+	
+	private void firstRollCall() {
+		display.waitForPlayerToClickRoll(1);
+		display.displayDice(dice);
+	}
+	
+	private void nextRollsCall() {
+		display.waitForPlayerToSelectDice();
+		rollSelected(dice);
+		display.displayDice(dice);
 	}
 
 	private void rollSelected(int[] array) {
@@ -97,6 +102,6 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private String[] playerNames; // array of strings containing player names
 	private YahtzeeDisplay display; // instance of the YahtzeeDisplay class
 	private RandomGenerator rgen = new RandomGenerator(); // instance of a random generator
-	private int nturns = 3;
+	
 
 }
