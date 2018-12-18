@@ -45,9 +45,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		/* Play Yahtzee game */
 		dice = generateDice(N_DICE); // generate initials points
 
-		for (int i = 0; i < dice.length; i++) {
-			System.out.println(dice[i]);
-		}
+		
 		
 			display.waitForPlayerToClickRoll(1);
 			display.displayDice(dice);
@@ -61,8 +59,14 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			display.displayDice(dice);
 			
 			int category = display.waitForPlayerToSelectCategory();
+			System.out.println(category);
+			
+			boolean p = YahtzeeMagicStub.checkCategory(dice, category);
+			System.out.println(p);
 			int score = 0;
 			display.updateScorecard(category, 1, score);
+			
+			
 			
 			String message = "Score = " + score;
 			display.printMessage(message);
