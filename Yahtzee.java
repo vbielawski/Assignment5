@@ -14,6 +14,7 @@ import acm.util.*;
 public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 	CategoryChecker checker = new CategoryChecker();
+	ScoresCounter scores = new ScoresCounter();
 
 	public static void main(String[] args) {
 		new Yahtzee().start(args);
@@ -63,7 +64,8 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 //			display.displayDice(dice);
 
 				int category = display.waitForPlayerToSelectCategory();
-				int score = 0;
+				boolean corresponds = checker.isOneToSix(dice, category);
+				int score = scores.getScoreOneSix(corresponds, category, dice);
 				display.updateScorecard(category, player, score);
 
 				String message = "Score = " + score;
