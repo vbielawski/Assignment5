@@ -65,7 +65,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 				int category = display.waitForPlayerToSelectCategory();
 				boolean corresponds = checker.isOneToSix(dice, category);
-				int score = scores.getScoreOneSix(corresponds, category, dice);
+				int score = ScoresCounter.getScoreOneSix(corresponds, category, dice);
 				display.updateScorecard(category, player, score);
 
 				String message = "Score = " + score;
