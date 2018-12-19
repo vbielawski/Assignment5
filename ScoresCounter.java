@@ -1,12 +1,33 @@
 
-public class ScoresCounter implements YahtzeeConstants{
+public class ScoresCounter implements YahtzeeConstants {
 
-	private static final int FullHouseScore = 25;
-	private static final int SmallStraightScore = 30;
-	private static final int BigStraightScore = 40;
-	private static final int YahtzeeScore = 50;
+	private int FullHouseScore = 25;
+	private int SmallStraightScore = 30;
+	private int BigStraightScore = 40;
+	private int YahtzeeScore = 50;
 	
-	CategoryChecker ct = new CategoryChecker();
+
+	public int getScoreOneSix(boolean isCategory, int category, int[] array) {
+		boolean onetosixfound = categoryfounder(array, category);
+		int sum = 0;
+		if(onetosixfound) {
+			
+		}
+		return sum;
+	}
+
+
+	private boolean categoryfounder(int[] array, int category) {
+		// TODO Auto-generated method stub
+		switch(category) {
+			
+		}
+		return false;
+	}
+
+
 	
+
+
 	
 }
