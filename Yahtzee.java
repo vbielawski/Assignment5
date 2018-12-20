@@ -13,7 +13,7 @@ import acm.util.*;
 
 public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
-	ScoresCounter scores = new ScoresCounter();
+	// ScoresCounter scores = new ScoresCounter();
 
 	public static void main(String[] args) {
 		new Yahtzee().start(args);
@@ -99,12 +99,12 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		return flag;
 
 	}
-	
+
 	private int countScores(int category, boolean isRight, int[] array) {
-		
+
 		int score = 0;
-		if(isRight) {
-			switch(category) {
+		if (isRight) {
+			switch (category) {
 			case ONES:
 			case TWOS:
 			case THREES:
@@ -112,11 +112,26 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			case FIVES:
 			case SIXES:
 				score = counter.getScoreOneSix(category, array);
-			
+
 			case THREE_OF_A_KIND:
-				
+				score = counter.getThreeOfAKindScore(array);
+			case FOUR_OF_A_KIND:
+				score = counter.getFourOfAKindScore(array);
+			case SMALL_STRAIGHT:
+				score = counter.getSmallStraightScore(array);
+			case LARGE_STRAIGHT:
+				score = counter.getLargeStraightScore(array);
+			case FULL_HOUSE:
+				score = counter.getFullHouseScore(array);
+			case YAHTZEE:
+				score = counter.getYahtzeeScore(array);
+			case CHANCE:
+				score = counter.getChanceScore(array);
+
 			}
-				
+
+			return score;
+
 		}
 		return score;
 	}
@@ -137,7 +152,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private int[] generateDice(int size) {
 		int[] arr = new int[size];
 		for (int i = 0; i < size; i++) {
-			arr[i] = rgen.nextInt(1, size+1);
+			arr[i] = rgen.nextInt(1, size + 1);
 		}
 		return arr;
 	}
