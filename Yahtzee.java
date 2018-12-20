@@ -63,6 +63,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 //			display.displayDice(dice);
 
 				int category = display.waitForPlayerToSelectCategory();
+				setSelected(category);
 				boolean isRelevant = checkCategory(category, dice);
 				System.out.println(isRelevant);
 				// boolean corresponds = checker.isOneToSix(dice, category);
@@ -73,6 +74,10 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				display.printMessage(message);
 			}
 		}
+	}
+	
+	private void setSelected(int category) {
+		
 	}
 
 	private boolean checkCategory(int category, int[] array) {
