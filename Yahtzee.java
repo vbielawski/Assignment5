@@ -13,7 +13,6 @@ import acm.util.*;
 
 public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
-	CategoryChecker checker = new CategoryChecker();
 	ScoresCounter scores = new ScoresCounter();
 
 	public static void main(String[] args) {
@@ -64,14 +63,62 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 //			display.displayDice(dice);
 
 				int category = display.waitForPlayerToSelectCategory();
-				boolean corresponds = checker.isOneToSix(dice, category);
-				int score = 0;
+				boolean isRelevant = checkCategory(category, dice);
+				System.out.println(isRelevant);
+				// boolean corresponds = checker.isOneToSix(dice, category);
+				int score = countScores(category, isRelevant, dice);
 				display.updateScorecard(category, player, score);
 
 				String message = "Score = " + score;
 				display.printMessage(message);
 			}
 		}
+	}
+
+	private boolean checkCategory(int category, int[] array) {
+		CategoryChecker checker = new CategoryChecker();
+		boolean flag = false;
+		if (checker.isOneToSix(array, category)) {
+			flag = true;
+		} else if (checker.isThreeOfAKind(array, category)) {
+			flag = true;
+		} else if (checker.isFourOfAKind(array, category)) {
+			flag = true;
+		} else if (checker.isSmallStraight(array, category)) {
+			flag = true;
+		} else if (checker.isBigStraight(array, category)) {
+			flag = true;
+		} else if (checker.isChance(array, category)) {
+			flag = true;
+		} else if (checker.isYahtzee(array, category)) {
+			flag = true;
+		} else {
+			flag = false;
+		}
+
+		return flag;
+
+	}
+	
+	private int countScores(int category, boolean isRight, int[] array) {
+		
+		int score = 0;
+		if(isRight) {
+			switch(category) {
+			case ONES:
+			case TWOS:
+			case THREES:
+			case FOURS:
+			case FIVES:
+			case SIXES:
+				score = counter.getScoreOneSix(category, array);
+			
+			case THREE_OF_A_KIND:
+				
+			}
+				
+		}
+		return score;
 	}
 
 	private void nextRollsCall() {
@@ -83,19 +130,20 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private void rollSelected(int[] array) {
 		for (int i = 0; i < array.length; i++)
 			if (display.isDieSelected(i)) {
-				array[i] = rgen.nextInt(1, array.length);
+				array[i] = rgen.nextInt(1, array.length + 1);
 			}
 	}
 
 	private int[] generateDice(int size) {
 		int[] arr = new int[size];
 		for (int i = 0; i < size; i++) {
-			arr[i] = rgen.nextInt(1, size);
+			arr[i] = rgen.nextInt(1, size+1);
 		}
 		return arr;
 	}
 
 	/* Private instance variables */
+	ScoresCounter counter = new ScoresCounter();
 	private int nPlayers; // number of players
 	private static int[] dice; // array of dice elements
 	private String[] playerNames; // array of strings containing player names
