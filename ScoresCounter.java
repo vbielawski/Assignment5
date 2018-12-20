@@ -1,10 +1,10 @@
 
 public class ScoresCounter implements YahtzeeConstants {
 
-	private int FullHouseScore = 25;
-	private int SmallStraightScore = 30;
-	private int BigStraightScore = 40;
-	private int YahtzeeScore = 50;
+	public int FullHouseScore = 25;
+	public int SmallStraightScore = 30;
+	public int BigStraightScore = 40;
+	public int YahtzeeScore = 50;
 	
 
 	public int getScoreOneSix(boolean isCategory, int category, int[] array) {
