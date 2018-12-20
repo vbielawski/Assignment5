@@ -78,7 +78,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private boolean checkCategory(int category, int[] array) {
 		CategoryChecker checker = new CategoryChecker();
 		boolean flag = false;
-		if (checker.isOneToSix(array, category)) {
+		if (checker.isOneToSix()) {
 			flag = true;
 		} else if (checker.isThreeOfAKind(array, category)) {
 			flag = true;
