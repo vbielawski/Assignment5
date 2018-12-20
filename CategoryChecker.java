@@ -4,7 +4,8 @@ public class CategoryChecker implements YahtzeeConstants {
 	
 	
 	
-	public boolean isOneToSix(int[] array, int category) {
+	public boolean isOneToSix(int[] array) {
+		
 		return true;
 	}
 	
@@ -38,8 +39,6 @@ public class CategoryChecker implements YahtzeeConstants {
 		
 	}
 	
-	public int straightCounter(int[] arr) {
-		return 0;
-	}
+	
 	
 }
