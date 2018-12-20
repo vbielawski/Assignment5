@@ -16,6 +16,11 @@ public class ScoresCounter implements YahtzeeConstants {
 		return sum;
 	}
 	
+	public int getThreeOfAKindScore(int[] array) {
+		int sum = 0;
+		return sum;
+	}
+	
 	public int getFourOfAKindScore(int[] array) {
 		int sum = 0;
 		return sum;
