@@ -129,21 +129,30 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		boolean flag = false;
 //		if (checker.isOneToSix(array, category)) {
 //			flag = true;
-		if (checker.isThreeOfAKind(array, category)) {
+		if (checker.isThreeOfAKind(array) && category == THREE_OF_A_KIND) {
 			flag = true;
-		} else if (checker.isFourOfAKind(array, category)) {
+		} else if (checker.isFourOfAKind(array) && category == FOUR_OF_A_KIND) {
 			flag = true;
-		} else if (checker.isSmallStraight(array, category)) {
+		} else if (checker.isFullHouse(array) && category == FULL_HOUSE) {
 			flag = true;
-		} else if (checker.isLargeStraight(array)) {
+		} else if (checker.isSmallStraight(array) && category == SMALL_STRAIGHT) {
 			flag = true;
-		} else if (checker.isYahtzee(array, category)) {
+		} else if (checker.isLargeStraight(array) && category == LARGE_STRAIGHT) {
+			flag = true;
+		} else if (checker.isYahtzee(array) && category == YAHTZEE) {
+			flag = true;
+		} else if (checker.isChance(array) && category == CHANCE) {
 			flag = true;
 		} else {
-			if(checker.isOneToSix(array, category) || checker.isChance(array, category)) {
+			switch (category) {
+			case ONES:
+			case TWOS:
+			case THREES:
+			case FOURS:
+			case FIVES:
+			case SIXES:
 				flag = true;
 			}
-			
 		}
 
 		return flag;
@@ -179,8 +188,6 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				score = counter.getChanceScore(array);
 
 			}
-
-			return score;
 
 		}
 		return score;
