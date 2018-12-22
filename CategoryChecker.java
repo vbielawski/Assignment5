@@ -32,11 +32,11 @@ public class CategoryChecker implements YahtzeeConstants {
 		this.status = false;
 	}
 
-	public boolean isOneToSix(int[] array, int category) {
+	public boolean isOneToSix(int[] array) {
 		return true;
 	}
 
-	public boolean isThreeOfAKind(int[] array, int category) {
+	public boolean isThreeOfAKind(int[] array) {
 		int[] result = initialize();
 		boolean status = false;
 		for (int i = 0; i < array.length; i++) {
@@ -52,7 +52,7 @@ public class CategoryChecker implements YahtzeeConstants {
 
 	}
 
-	public boolean isFourOfAKind(int[] array, int category) {
+	public boolean isFourOfAKind(int[] array) {
 		frequencyTable = initialize();
 		// boolean status = false;
 		for (int i = 0; i < array.length; i++) {
@@ -70,7 +70,7 @@ public class CategoryChecker implements YahtzeeConstants {
 
 	}
 
-	public boolean isSmallStraight(int[] array, int category) {
+	public boolean isSmallStraight(int[] array) {
 		sortArray(array);
 		int counter = 0;
 		for (int i = 0; i < array.length - 1; i++) {
@@ -100,8 +100,12 @@ public class CategoryChecker implements YahtzeeConstants {
 		return false;
 
 	}
+	
+	public boolean isFullHouse(int[] array) {
+		return false;
+	}
 
-	public boolean isYahtzee(int[] array, int category) {
+	public boolean isYahtzee(int[] array) {
 		for (int i = 0; i < array.length; i++) {
 			if (array[i] != array[0]) {
 				return false;
@@ -111,7 +115,7 @@ public class CategoryChecker implements YahtzeeConstants {
 
 	}
 
-	public boolean isChance(int[] array, int category) {
+	public boolean isChance(int[] array) {
 		return true;
 
 	}
