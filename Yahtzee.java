@@ -64,7 +64,6 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 				int category = display.waitForPlayerToSelectCategory();
 				setSelected(category, player);
-				
 
 				boolean isRelevant = checkCategory(category, dice);
 				System.out.println(isRelevant);
@@ -137,8 +136,6 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		} else if (checker.isSmallStraight(array, category)) {
 			flag = true;
 		} else if (checker.isBigStraight(array, category)) {
-			flag = true;
-		} else if (checker.isChance(array, category)) {
 			flag = true;
 		} else if (checker.isYahtzee(array, category)) {
 			flag = true;
