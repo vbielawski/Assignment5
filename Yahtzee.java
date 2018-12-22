@@ -63,20 +63,65 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 //			display.displayDice(dice);
 
 				int category = display.waitForPlayerToSelectCategory();
-				setSelected(category);
+				setSelected(category, player);
+				System.out.println();
+				
 				boolean isRelevant = checkCategory(category, dice);
 				System.out.println(isRelevant);
 				// boolean corresponds = checker.isOneToSix(dice, category);
 				int score = countScores(category, isRelevant, dice);
+				System.out.println(score);
+				
 				display.updateScorecard(category, player, score);
 
 				String message = "Score = " + score;
 				display.printMessage(message);
 			}
+			
+			if(allCategoryIsSelected()) {
+				sumScores();
+			}
+			printResult();
 		}
+		
 	}
 	
-	private void setSelected(int category) {
+	private void printResult() {
+		
+	}
+	
+	private boolean allCategoryIsSelected() {
+		return false;
+	}
+	
+	private void sumScores() {
+		sumUpper();
+		writeBonus();
+		sumBottom();
+		sumTotal();
+	}
+	
+	private void sumBottom() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void sumTotal() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void writeBonus() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void sumUpper() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void setSelected(int category, int player) {
 		
 	}
 
