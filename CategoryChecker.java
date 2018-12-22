@@ -5,19 +5,19 @@ import acm.io.IODialog;
 
 public class CategoryChecker implements YahtzeeConstants {
 	
-	public void main(String[] args) {
-		IODialog dial = new IODialog();
-		IOConsole cons = new IOConsole();
-		int[] array = new int[5];
-		for(int i = 0; i < array.length; i++) {
-			array[i] = dial.readInt("number: ");
-		}
-		
-		for(int el : array) {
-			cons.print(el);
-		}
-		
-	}
+//	public void main(String[] args) {
+//		IODialog dial = new IODialog();
+//		IOConsole cons = new IOConsole();
+//		int[] array = new int[5];
+//		for(int i = 0; i < array.length; i++) {
+//			array[i] = dial.readInt("number: ");
+//		}
+//		
+//		for(int el : array) {
+//			cons.print(el);
+//		}
+//		
+//	}
 	
 	
 	private int[] initialize() {
@@ -34,8 +34,18 @@ public class CategoryChecker implements YahtzeeConstants {
 	}
 	
 	public boolean isThreeOfAKind(int[] array, int category) {
-		
-		return false;
+		int[] result = initialize();
+		boolean status = false;
+		for(int i = 0; i < array.length; i++) {
+			int index = array[i];
+			result[index]++;
+		}
+		for(int i = 0; i < result.length; i++) {
+			if(result[i] >= 3) {
+				status = true;
+			}
+		}
+		return status;
 		
 	}
 	
