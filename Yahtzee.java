@@ -65,72 +65,72 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				int category = display.waitForPlayerToSelectCategory();
 				setSelected(category, player);
 				System.out.println();
-				
+
 				boolean isRelevant = checkCategory(category, dice);
 				System.out.println(isRelevant);
 				// boolean corresponds = checker.isOneToSix(dice, category);
 				int score = countScores(category, isRelevant, dice);
 				System.out.println(score);
-				
+
 				display.updateScorecard(category, player, score);
 
 				String message = "Score = " + score;
 				display.printMessage(message);
 			}
-			
-			if(allCategoryIsSelected()) {
+
+			if (allCategoryIsSelected()) {
 				sumScores();
 			}
 			printResult();
 		}
-		
+
 	}
-	
+
 	private void printResult() {
-		
+
 	}
-	
+
 	private boolean allCategoryIsSelected() {
 		return false;
 	}
-	
+
 	private void sumScores() {
 		sumUpper();
 		writeBonus();
 		sumBottom();
 		sumTotal();
 	}
-	
+
 	private void sumBottom() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	private void sumTotal() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	private void writeBonus() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	private void sumUpper() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	private void setSelected(int category, int player) {
-		
+
 	}
 
 	private boolean checkCategory(int category, int[] array) {
 		CategoryChecker checker = new CategoryChecker();
 		boolean flag = false;
-		if (checker.isOneToSix(array, category)) {
-			flag = true;
-		} else if (checker.isThreeOfAKind(array, category)) {
+//		if (checker.isOneToSix(array, category)) {
+//			flag = true;
+		if (checker.isThreeOfAKind(array, category)) {
 			flag = true;
 		} else if (checker.isFourOfAKind(array, category)) {
 			flag = true;
