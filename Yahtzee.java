@@ -135,12 +135,15 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			flag = true;
 		} else if (checker.isSmallStraight(array, category)) {
 			flag = true;
-		} else if (checker.isBigStraight(array, category)) {
+		} else if (checker.isLargeStraight(array)) {
 			flag = true;
 		} else if (checker.isYahtzee(array, category)) {
 			flag = true;
 		} else {
-			flag = false;
+			if(checker.isOneToSix(array, category) || checker.isChance(array, category)) {
+				flag = true;
+			}
+			
 		}
 
 		return flag;
