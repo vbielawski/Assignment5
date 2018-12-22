@@ -28,8 +28,8 @@ public class CategoryChecker implements YahtzeeConstants {
 
 	}
 
-	private boolean setStatus() {
-		return this.status = false;
+	private void setStatus() {
+		this.status = false;
 	}
 
 	public boolean isOneToSix(int[] array, int category) {
@@ -87,6 +87,16 @@ public class CategoryChecker implements YahtzeeConstants {
 	}
 
 	public boolean isLargeStraight(int[] array, int category) {
+		sortArray(array);
+		int counter = 0;
+		for(int i = 0; i < array.length - 1; i++) {
+			if(isStraight(i, i+1, array)) {
+				counter++;
+			}
+		}
+		if(counter == 5) {
+			return true;
+		}
 		return false;
 
 	}
