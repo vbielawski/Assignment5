@@ -74,7 +74,7 @@ public class CategoryChecker implements YahtzeeConstants {
 
 	public boolean isSmallStraight(int[] array) {
 		sortArray(array);
-		//System.out.println(Arrays.toString(array));
+		// System.out.println(Arrays.toString(array));
 		int counter = 1;
 		for (int i = 0; i < array.length - 1; i++) {
 			if (isStraight(i, i + 1, array)) {
@@ -91,7 +91,7 @@ public class CategoryChecker implements YahtzeeConstants {
 
 	public boolean isLargeStraight(int[] array) {
 		sortArray(array);
-		//System.out.println(Arrays.toString(array));
+		// System.out.println(Arrays.toString(array));
 		int counter = 1;
 		for (int i = 0; i < array.length - 1; i++) {
 			if (isStraight(i, i + 1, array)) {
@@ -104,7 +104,7 @@ public class CategoryChecker implements YahtzeeConstants {
 		return false;
 
 	}
-	
+
 	public boolean isFullHouse(int[] array) {
 		int firsts = 0;
 		int seconds = 0;
@@ -112,18 +112,24 @@ public class CategoryChecker implements YahtzeeConstants {
 		sortArray(array);
 		int first = array[0];
 		int last = array[array.length - 1];
-		for(int i = 0; i < array.length; i++) {
-			if(array[i] == first) first++;
-			if(array[i] == last) seconds++;
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] == first)
+				first++;
 		}
+
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] == last)
+				seconds++;
+		}
+		
 		System.out.println(Arrays.toString(array));
 		System.out.println(firsts);
 		System.out.println(seconds);
-		
-		if((firsts == 2 && seconds == 3) || (firsts == 3 && seconds == 2)) {
+
+		if ((firsts == 2 && seconds == 3) || (firsts == 3 && seconds == 2)) {
 			fullhouse = true;
 		}
-		
+
 		return fullhouse;
 	}
 
@@ -146,7 +152,7 @@ public class CategoryChecker implements YahtzeeConstants {
 		boolean isPlusOne = (arr[index2] == arr[index1] + 1);
 		return isPlusOne;
 	}
-	
+
 //	public boolean isStraightM(int index1, int index2, int[] arr) {
 //		boolean isPlusOne = (arr[index2] == arr[index1] + 1);
 //		return isPlusOne;
@@ -174,11 +180,9 @@ public class CategoryChecker implements YahtzeeConstants {
 		array[p1] = array[p2];
 		array[p2] = temp;
 	}
-	
-
 
 	private int frequencylength = 7;
-	//private int[] frequencyTable;
+	// private int[] frequencyTable;
 	boolean status;
 
 }
