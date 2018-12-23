@@ -129,14 +129,9 @@ public class CategoryChecker implements YahtzeeConstants {
 		return isPlusOne;
 	}
 	
-	public boolean isStraight(int[] arr) {
-		for(int i = 0; i < arr.length - 1; i++) {
-			if(arr[i+1] == arr[i] + 1) {
-				return true;
-				
-			} continue;
-		}
-		return false;
+	public boolean isStraightM(int index1, int index2, int[] arr) {
+		boolean isPlusOne = (arr[index2] == arr[index1] + 1);
+		return isPlusOne;
 	}
 
 	private void sortArray(int[] arr) {
