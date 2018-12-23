@@ -1,24 +1,7 @@
-import java.io.Console;
+
 import java.util.Arrays;
 
-import acm.io.IOConsole;
-import acm.io.IODialog;
-
 public class CategoryChecker implements YahtzeeConstants {
-
-//	public void main(String[] args) {
-//		IODialog dial = new IODialog();
-//		IOConsole cons = new IOConsole();
-//		int[] array = new int[5];
-//		for(int i = 0; i < array.length; i++) {
-//			array[i] = dial.readInt("number: ");
-//		}
-//		
-//		for(int el : array) {
-//			cons.print(el);
-//		}
-//		
-//	}
 
 	private int[] initialize() {
 		int[] arr = new int[frequencylength];
@@ -121,7 +104,7 @@ public class CategoryChecker implements YahtzeeConstants {
 			if (array[i] == last)
 				seconds++;
 		}
-		
+
 		System.out.println(Arrays.toString(array));
 		System.out.println(firsts);
 		System.out.println(seconds);
