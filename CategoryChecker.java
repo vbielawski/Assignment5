@@ -72,36 +72,36 @@ public class CategoryChecker implements YahtzeeConstants {
 
 	}
 
-	public void isSmallStraight(int[] array) {
+	public boolean isSmallStraight(int[] array) {
 		sortArray(array);
 		System.out.println(Arrays.toString(array));
-//		int counter = 0;
-//		for (int i = 0; i < array.length - 1; i++) {
-//			if (isStraight(i, i + 1, array)) {
-//				counter++;
-//			}
-//		}
-//		if (counter >= 4) {
-//			return true;
-//		}
-//
-//		return false;
+		int counter = 1;
+		for (int i = 0; i < array.length - 1; i++) {
+			if (isStraight(i, i + 1, array)) {
+				counter++;
+			}
+		}
+		if (counter >= 4) {
+			return true;
+		}
+
+		return false;
 
 	}
 
-	public void isLargeStraight(int[] array) {
+	public boolean isLargeStraight(int[] array) {
 		sortArray(array);
 		System.out.println(Arrays.toString(array));
-//		int counter = 0;
-//		for (int i = 0; i < array.length - 1; i++) {
-//			if (isStraight(i, i + 1, array)) {
-//				counter++;
-//			}
-//		}
-//		if (counter == 5) {
-//			return true;
-//		}
-//		return false;
+		int counter = 1;
+		for (int i = 0; i < array.length - 1; i++) {
+			if (isStraight(i, i + 1, array)) {
+				counter++;
+			}
+		}
+		if (counter == 5) {
+			return true;
+		}
+		return false;
 
 	}
 	
@@ -129,10 +129,10 @@ public class CategoryChecker implements YahtzeeConstants {
 		return isPlusOne;
 	}
 	
-	public boolean isStraightM(int index1, int index2, int[] arr) {
-		boolean isPlusOne = (arr[index2] == arr[index1] + 1);
-		return isPlusOne;
-	}
+//	public boolean isStraightM(int index1, int index2, int[] arr) {
+//		boolean isPlusOne = (arr[index2] == arr[index1] + 1);
+//		return isPlusOne;
+//	}
 
 	private void sortArray(int[] arr) {
 		for (int i = 0; i < arr.length; i++) {
