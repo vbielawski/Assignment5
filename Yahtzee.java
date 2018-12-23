@@ -91,11 +91,14 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 	
 	private void print2DArray() {
+		int counter = 0;
 		for(int i = 0; i < selected.length; i++) {
 			for(int j = 0; j < selected[0].length; j++) {
 				System.out.println(selected[i][j]);
+				counter++;
 			}
 		}
+		System.out.println(counter);
 	}
 
 	private void printResult() {
