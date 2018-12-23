@@ -107,12 +107,6 @@ public class ScoresCounter implements YahtzeeConstants {
 		return sum;
 	}
 
-	private boolean categoryfounder(int[] array, int category) {
-		// TODO Auto-generated method stub
-		switch (category) {
-
-		}
-		return false;
-	}
+	
 
 }
