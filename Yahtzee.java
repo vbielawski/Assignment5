@@ -72,6 +72,10 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 //			display.displayDice(dice);
 
 				int category = display.waitForPlayerToSelectCategory();
+				
+				while(isAlreadyUpdated(category, player)) {
+					display.printMessage("This category is already selected, try another!");
+				}
 
 				setCategorySelected(category, player);
 				print2DArray();
@@ -82,9 +86,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				int score = countScores(category, isRelevant, dice);
 				System.out.println(score);
 
-				while(isAlreadyUpdated(category, player)) {
-					display.printMessage("This category is already selected, try another!");
-				}
+				
 				display.updateScorecard(category, player, score);
 
 				String message = "Score = " + score;
