@@ -137,7 +137,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			flag = true;
 		} else if (category == SMALL_STRAIGHT) {
 			checker.isSmallStraight(array);
-			int counter = 0;
+			int counter = 1;
 			for(int i = 0; i < array.length - 1; i++) {
 				if(checker.isStraightM(i, i+1, array)) {
 					counter++;
@@ -147,7 +147,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			flag = true;
 		} else if (category == LARGE_STRAIGHT) {
 			checker.isLargeStraight(array);
-			int counter = 0;
+			int counter = 1;
 			for(int i = 0; i < array.length - 1; i++) {
 				if(checker.isStraightM(i, i+1, array)) {
 					counter++;
