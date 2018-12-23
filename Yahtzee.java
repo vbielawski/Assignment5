@@ -34,6 +34,10 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		IODialog dialog = getDialog();
 
 		nPlayers = dialog.readInt("Enter number of players");
+		/*
+		 * According to game terms, players more than 4 are not allowed. while loop
+		 * controls this term
+		 */
 		while (nPlayers > MAX_PLAYERS) {
 			nPlayers = dialog.readInt("Enter number of players(less/equal to " + MAX_PLAYERS + ")");
 		}
@@ -42,6 +46,11 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		for (int i = 1; i <= nPlayers; i++) {
 			playerNames[i - 1] = dialog.readLine("Enter name for player " + i);
 		}
+		/*
+		 * populates boolean tables with default values, table is used for saving the
+		 * category selected by current player.
+		 */
+		populateTable(N_CATEGORIES, nPlayers);
 
 	}
 
@@ -63,7 +72,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 //			display.displayDice(dice);
 
 				int category = display.waitForPlayerToSelectCategory();
-				
+
 				setCategorySelected(category, player);
 				print2DArray();
 
@@ -89,11 +98,11 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		}
 
 	}
-	
+
 	private void print2DArray() {
 		int counter = 0;
-		for(int i = 0; i < selected.length; i++) {
-			for(int j = 0; j < selected[0].length; j++) {
+		for (int i = 0; i < selected.length; i++) {
+			for (int j = 0; j < selected[0].length; j++) {
 				System.out.println(selected[i][j]);
 				counter++;
 			}
@@ -137,14 +146,13 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 
 	private void setCategorySelected(int category, int player) {
-		populateTable(N_CATEGORIES, nPlayers);
 
 	}
-	
+
 	private void populateTable(int rows, int colomns) {
 		selected = new boolean[rows][colomns];
-		for(int i = 0; i < rows; i++) {
-			for(int j = 0; j < colomns; j++) {
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < colomns; j++) {
 				selected[i][j] = false;
 			}
 		}
