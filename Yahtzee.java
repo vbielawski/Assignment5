@@ -137,9 +137,13 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			flag = true;
 		} else if (category == SMALL_STRAIGHT) {
 			checker.isSmallStraight(array);
+			boolean p = checker.isStraight(array);
+			System.out.println(p);
 			flag = true;
 		} else if (category == LARGE_STRAIGHT) {
 			checker.isLargeStraight(array);
+			boolean p = checker.isStraight(array);
+			System.out.println(p);
 			flag = true;
 		} else if (checker.isYahtzee(array) && category == YAHTZEE) {
 			flag = true;
