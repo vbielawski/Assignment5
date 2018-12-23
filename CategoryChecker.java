@@ -106,6 +106,20 @@ public class CategoryChecker implements YahtzeeConstants {
 	}
 	
 	public boolean isFullHouse(int[] array) {
+		int firsts = 0;
+		int seconds = 0;
+		sortArray(array);
+		int first = array[0];
+		int last = array[array.length - 1];
+		for(int i = 0; i < array.length; i++) {
+			if(array[i] == first) first++;
+			if(array[i] == last) seconds++;
+		}
+		
+		if((firsts == 2 && seconds == 3) || (firsts == 3 && seconds == 2)) {
+			return true;
+		}
+		
 		return false;
 	}
 
