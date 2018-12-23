@@ -74,7 +74,7 @@ public class CategoryChecker implements YahtzeeConstants {
 
 	public boolean isSmallStraight(int[] array) {
 		sortArray(array);
-		System.out.println(Arrays.toString(array));
+		//System.out.println(Arrays.toString(array));
 		int counter = 1;
 		for (int i = 0; i < array.length - 1; i++) {
 			if (isStraight(i, i + 1, array)) {
@@ -91,7 +91,7 @@ public class CategoryChecker implements YahtzeeConstants {
 
 	public boolean isLargeStraight(int[] array) {
 		sortArray(array);
-		System.out.println(Arrays.toString(array));
+		//System.out.println(Arrays.toString(array));
 		int counter = 1;
 		for (int i = 0; i < array.length - 1; i++) {
 			if (isStraight(i, i + 1, array)) {
