@@ -6,38 +6,63 @@ public class ScoresCounter implements YahtzeeConstants {
 	private int LargeStraightScore = 40;
 	private int YahtzeeScore = 50;
 
-	public int getScoreOneSix(int category, int[] array) {
+	
+
+	public int getOnes(int[] array) {
 		int sum = 0;
-		switch (category) {
-		case ONES:
-			for (int i = 0; i < array.length; i++) {
-				if (array[i] == 1)
-					sum++;
+		for(int i = 0; i < array.length; i++) {
+			if(array[i] == 1) {
+				sum++;
 			}
-		case TWOS:
-			for (int i = 0; i < array.length; i++) {
-				if (array[i] == 2)
-					sum += 2;
+		}
+		return sum;
+	}
+
+	public int getTwos(int[] array) {
+		int sum = 0;
+		for(int i = 0; i < array.length; i++) {
+			if(array[i] == 2) {
+				sum+=2;
 			}
-		case THREES:
-			for (int i = 0; i < array.length; i++) {
-				if (array[i] == 3)
-					sum += 3;
+		}
+		return sum;
+	}
+
+	public int getThrees(int[] array) {
+		int sum = 0;
+		for(int i = 0; i < array.length; i++) {
+			if(array[i] == 3) {
+				sum+=3;
 			}
-		case FOURS:
-			for (int i = 0; i < array.length; i++) {
-				if (array[i] == 4)
-					sum += 4;
+		}
+		return sum;
+	}
+
+	public int getFours(int[] array) {
+		int sum = 0;
+		for(int i = 0; i < array.length; i++) {
+			if(array[i] == 4) {
+				sum+=4;
 			}
-		case FIVES:
-			for (int i = 0; i < array.length; i++) {
-				if (array[i] == 5)
-					sum += 5;
+		}
+		return sum;
+	}
+
+	public int getFives(int[] array) {
+		int sum = 0;
+		for(int i = 0; i < array.length; i++) {
+			if(array[i] == 5) {
+				sum+=5;
 			}
-		case SIXES:
-			for (int i = 0; i < array.length; i++) {
-				if (array[i] == 6)
-					sum += 6;
+		}
+		return sum;
+	}
+	
+	public int getSixes(int[] array) {
+		int sum = 0;
+		for(int i = 0; i < array.length; i++) {
+			if(array[i] == 6) {
+				sum+=6;
 			}
 		}
 		return sum;

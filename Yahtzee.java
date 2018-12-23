@@ -168,17 +168,17 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		if (isRight) {
 			switch (category) {
 			case ONES:
-				score = scorescounter.getScoreOneSix(ONES,array);
+				score = scorescounter.getOnes(array);
 			case TWOS:
-				score = scorescounter.getScoreOneSix(TWOS,array);
+				score = scorescounter.getTwos(array);
 			case THREES:
-				score = scorescounter.getScoreOneSix(THREES,array);
+				score = scorescounter.getThrees(array);
 			case FOURS:
-				score = scorescounter.getScoreOneSix(FOURS,array);
+				score = scorescounter.getFours(array);
 			case FIVES:
-				score = scorescounter.getScoreOneSix(FIVES,array);
+				score = scorescounter.getFives(array);
 			case SIXES:
-				score = scorescounter.getScoreOneSix(SIXES,array);
+				score = scorescounter.getSixes(array);
 				
 
 			case THREE_OF_A_KIND:
