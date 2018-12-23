@@ -155,6 +155,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			case FIVES:
 			case SIXES:
 				flag = true;
+				break;
 			}
 		}
 
@@ -167,36 +168,50 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		int score = 0;
 		if (isRight) {
 			switch (category) {
-			case CHANCE:
-				score = scorescounter.getChanceScore(array);
+			// case CHANCE:
+
 			case ONES:
 				score = scorescounter.getOnes(array);
+				break;
 			case TWOS:
 				score = scorescounter.getTwos(array);
+				break;
 			case THREES:
 				score = scorescounter.getThrees(array);
+				break;
 			case FOURS:
 				score = scorescounter.getFours(array);
+				break;
 			case FIVES:
 				score = scorescounter.getFives(array);
+				break;
 			case SIXES:
 				score = scorescounter.getSixes(array);
-				
+				break;
 
 			case THREE_OF_A_KIND:
 				score = scorescounter.getThreeOfAKindScore(array);
+				break;
 			case FOUR_OF_A_KIND:
 				score = scorescounter.getFourOfAKindScore(array);
+				break;
 			case SMALL_STRAIGHT:
 				score = scorescounter.getSmallStraightScore();
+				break;
 			case LARGE_STRAIGHT:
 				score = scorescounter.getLargeStraightScore();
+				break;
 			case FULL_HOUSE:
 				score = scorescounter.getFullHouseScore();
+				break;
 			case YAHTZEE:
 				score = scorescounter.getYahtzeeScore();
-			
-}
+				break;
+			default:
+				score = scorescounter.getChanceScore(array);
+				break;
+
+			}
 		}
 		return score;
 	}
