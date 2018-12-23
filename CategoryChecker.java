@@ -1,4 +1,5 @@
 import java.io.Console;
+import java.util.Arrays;
 
 import acm.io.IOConsole;
 import acm.io.IODialog;
@@ -71,34 +72,36 @@ public class CategoryChecker implements YahtzeeConstants {
 
 	}
 
-	public boolean isSmallStraight(int[] array) {
+	public void isSmallStraight(int[] array) {
 		sortArray(array);
-		int counter = 0;
-		for (int i = 0; i < array.length - 1; i++) {
-			if (isStraight(i, i + 1, array)) {
-				counter++;
-			}
-		}
-		if (counter >= 4) {
-			return true;
-		}
-
-		return false;
+		System.out.println(Arrays.toString(array));
+//		int counter = 0;
+//		for (int i = 0; i < array.length - 1; i++) {
+//			if (isStraight(i, i + 1, array)) {
+//				counter++;
+//			}
+//		}
+//		if (counter >= 4) {
+//			return true;
+//		}
+//
+//		return false;
 
 	}
 
-	public boolean isLargeStraight(int[] array) {
+	public void isLargeStraight(int[] array) {
 		sortArray(array);
-		int counter = 0;
-		for (int i = 0; i < array.length - 1; i++) {
-			if (isStraight(i, i + 1, array)) {
-				counter++;
-			}
-		}
-		if (counter == 5) {
-			return true;
-		}
-		return false;
+		System.out.println(Arrays.toString(array));
+//		int counter = 0;
+//		for (int i = 0; i < array.length - 1; i++) {
+//			if (isStraight(i, i + 1, array)) {
+//				counter++;
+//			}
+//		}
+//		if (counter == 5) {
+//			return true;
+//		}
+//		return false;
 
 	}
 	
@@ -148,6 +151,8 @@ public class CategoryChecker implements YahtzeeConstants {
 		array[p1] = array[p2];
 		array[p2] = temp;
 	}
+	
+
 
 	private int frequencylength = 7;
 	//private int[] frequencyTable;
