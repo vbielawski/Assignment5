@@ -74,7 +74,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 //			display.displayDice(dice);
 
 				int category = display.waitForPlayerToSelectCategory();
-				
+
 //				if(isAlreadyUpdated(category, player)) {
 //					display.printMessage("This category is already selected, try another!");
 //				}
@@ -93,7 +93,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 				String message = "Score = " + score;
 				display.printMessage(message);
-				
+
 				steps--;
 			}
 
@@ -103,6 +103,17 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			printResult();
 		}
 
+	}
+
+	private int findWinnerIndex() {
+		int maximum = scorecard[TOTAL][0];
+		int index = 0;
+		for (int i = 0; i < scorecard[TOTAL].length; i++) {
+			if (scorecard[TOTAL][i] > maximum) {
+				index = i;
+			}
+		}
+		return index;
 	}
 
 	private void print2DArray() {
@@ -117,7 +128,10 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 
 	private void printResult() {
-
+		int winnerindex = findWinnerIndex();
+		String name = playerNames[winnerindex];
+		int total = scorecard[TOTAL][winnerindex];
+		display.printMessage("Congratulations, " + name + ", you are the winner with a total score of " + total + "!");
 	}
 
 	private boolean allCategoryIsSelected() {
@@ -125,6 +139,18 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 
 	private void sumScores() {
+		for(players) {
+			int upperscore = 0;
+			display.updateScorecard(category, player, score);
+			if(upperscore >= 63) {
+				int bonus = 0;
+				display.updateScorecard(category, player, score);
+			}
+			int buttom = 0;
+			display.updateScorecard(category, player, score);
+			int total = buttom + upper + bonus;
+			display.updateScorecard(category, player, score);
+		}
 		sumUpper();
 		writeBonus();
 		sumBottom();
@@ -146,15 +172,15 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 	}
 
-	private void sumUpper() {
+	private int sumUpper() {
 		// TODO Auto-generated method stub
-
+		return uppersum;
 	}
 
 	private void setCategorySelected(int category, int player) {
 		selected[category - 1][player - 1] = true;
 	}
-	
+
 	private boolean isAlreadyUpdated(int category, int player) {
 		return selected[category - 1][player - 1] == true;
 	}
@@ -290,5 +316,5 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private RandomGenerator rgen = new RandomGenerator(); // instance of a random generator
 	private boolean[][] selected;
 	private int[][] scorecard;
-	
+
 }
