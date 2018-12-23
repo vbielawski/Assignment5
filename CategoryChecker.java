@@ -38,35 +38,36 @@ public class CategoryChecker implements YahtzeeConstants {
 
 	public boolean isThreeOfAKind(int[] array) {
 		int[] result = initialize();
-		boolean status = false;
+		boolean threekind = false;
 		for (int i = 0; i < array.length; i++) {
 			int index = array[i];
 			result[index]++;
 		}
 		for (int i = 0; i < result.length; i++) {
 			if (result[i] >= 3) {
-				status = true;
+				threekind = true;
 			}
 		}
-		return status;
+		return threekind;
 
 	}
 
 	public boolean isFourOfAKind(int[] array) {
-		frequencyTable = initialize();
+		int result[] = initialize();
+		boolean fourkind = false;
 		// boolean status = false;
 		for (int i = 0; i < array.length; i++) {
 			int index = array[i];
-			frequencyTable[index]++;
+			result[index]++;
 		}
 
-		for (int i = 0; i < frequencyTable.length; i++) {
-			if (frequencyTable[i] >= 4) {
-				status = true;
+		for (int i = 0; i < result.length; i++) {
+			if (result[i] >= 4) {
+				fourkind = true;
 			}
 		}
 
-		return status;
+		return fourkind;
 
 	}
 
@@ -149,7 +150,7 @@ public class CategoryChecker implements YahtzeeConstants {
 	}
 
 	private int frequencylength = 7;
-	private int[] frequencyTable;
+	//private int[] frequencyTable;
 	boolean status;
 
 }
