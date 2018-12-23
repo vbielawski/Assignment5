@@ -167,6 +167,8 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		int score = 0;
 		if (isRight) {
 			switch (category) {
+			case CHANCE:
+				score = scorescounter.getChanceScore(array);
 			case ONES:
 				score = scorescounter.getOnes(array);
 			case TWOS:
@@ -193,11 +195,8 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				score = scorescounter.getFullHouseScore();
 			case YAHTZEE:
 				score = scorescounter.getYahtzeeScore();
-			case CHANCE:
-				score = scorescounter.getChanceScore(array);
-
-			}
-
+			
+}
 		}
 		return score;
 	}
