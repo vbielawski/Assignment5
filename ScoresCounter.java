@@ -69,12 +69,12 @@ public class ScoresCounter implements YahtzeeConstants {
 		return SmallStraightScore;
 	}
 
-	public int getLargeStraightScore(int[] array) {
+	public int getLargeStraightScore() {
 
 		return LargeStraightScore;
 	}
 
-	public int getYahtzeeScore(int[] array) {
+	public int getYahtzeeScore() {
 
 		return YahtzeeScore;
 	}
