@@ -65,13 +65,13 @@ public class ScoresCounter implements YahtzeeConstants {
 	}
 
 	public int getSmallStraightScore() {
-
-		return SmallStraightScore;
+		int score = this.SmallStraightScore;
+		return score;
 	}
 
 	public int getLargeStraightScore() {
-
-		return LargeStraightScore;
+		int score = this.LargeStraightScore;
+		return score;
 	}
 
 	public int getYahtzeeScore() {
