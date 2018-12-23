@@ -51,11 +51,13 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		 * category selected by current player.
 		 */
 		populateTable(N_CATEGORIES, nPlayers);
+		scorecard = new int[N_CATEGORIES][nPlayers];
 
 	}
 
 	private void playGame() {
 		/* Play Yahtzee game */
+		int steps = N_CATEGORIES * nPlayers;
 		while (true) {
 			for (int player = 1; player <= nPlayers; player++) {
 				dice = generateDice(N_DICE); // generate initials dice values
@@ -73,9 +75,9 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 				int category = display.waitForPlayerToSelectCategory();
 				
-				if(isAlreadyUpdated(category, player)) {
-					display.printMessage("This category is already selected, try another!");
-				}
+//				if(isAlreadyUpdated(category, player)) {
+//					display.printMessage("This category is already selected, try another!");
+//				}
 
 				setCategorySelected(category, player);
 				print2DArray();
@@ -86,14 +88,16 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				int score = countScores(category, isRelevant, dice);
 				System.out.println(score);
 
-				
+				scorecard[category - 1][player - 1] = score;
 				display.updateScorecard(category, player, score);
 
 				String message = "Score = " + score;
 				display.printMessage(message);
+				
+				steps--;
 			}
 
-			if (allCategoryIsSelected()) {
+			if (steps == 0) {
 				sumScores();
 			}
 			printResult();
@@ -103,9 +107,9 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 	private void print2DArray() {
 		int counter = 0;
-		for (int i = 0; i < selected.length; i++) {
-			for (int j = 0; j < selected[0].length; j++) {
-				System.out.println(selected[i][j]);
+		for (int i = 0; i < scorecard.length; i++) {
+			for (int j = 0; j < scorecard[0].length; j++) {
+				System.out.println(scorecard[i][j]);
 				counter++;
 			}
 		}
@@ -285,5 +289,6 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private YahtzeeDisplay display; // instance of the YahtzeeDisplay class
 	private RandomGenerator rgen = new RandomGenerator(); // instance of a random generator
 	private boolean[][] selected;
-
+	private int[][] scorecard;
+	
 }
