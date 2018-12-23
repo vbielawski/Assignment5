@@ -114,7 +114,7 @@ public class CategoryChecker implements YahtzeeConstants {
 		int last = array[array.length - 1];
 		for (int i = 0; i < array.length; i++) {
 			if (array[i] == first)
-				first++;
+				firsts++;
 		}
 
 		for (int i = 0; i < array.length; i++) {
