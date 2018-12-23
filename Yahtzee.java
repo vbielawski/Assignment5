@@ -173,7 +173,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			case FOURS:
 			case FIVES:
 			case SIXES:
-				score = scorescounter.getScoreOneSix(int category,array);
+				score = scorescounter.getScoreOneSix(category,array);
 
 			case THREE_OF_A_KIND:
 				score = scorescounter.getThreeOfAKindScore(array);
