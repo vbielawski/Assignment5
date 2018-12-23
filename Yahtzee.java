@@ -63,7 +63,9 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 //			display.displayDice(dice);
 
 				int category = display.waitForPlayerToSelectCategory();
-				setSelected(category, player);
+				
+				setCategorySelected(category, player);
+				System.out.println(Arrays.toString(selected));
 
 				boolean isRelevant = checkCategory(category, dice);
 				System.out.println(isRelevant);
@@ -71,6 +73,9 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				int score = countScores(category, isRelevant, dice);
 				System.out.println(score);
 
+//				if(isAlreadyUpdated(category)) {
+//					display.printMessage("This category is already selected, try another!");
+//				}
 				display.updateScorecard(category, player, score);
 
 				String message = "Score = " + score;
@@ -120,8 +125,17 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 	}
 
-	private void setSelected(int category, int player) {
+	private void setCategorySelected(int category, int player) {
+		populateTable(N_CATEGORIES, nPlayers);
 
+	}
+	
+	private void populateTable(int rows, int colomns) {
+		for(int i = 0; i < rows; i++) {
+			for(int j = 0; j < colomns; j++) {
+				selected[i][j] = false;
+			}
+		}
 	}
 
 	private boolean checkCategory(int category, int[] array) {
@@ -244,5 +258,6 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private String[] playerNames; // array of strings containing player names
 	private YahtzeeDisplay display; // instance of the YahtzeeDisplay class
 	private RandomGenerator rgen = new RandomGenerator(); // instance of a random generator
+	private boolean[][] selected;
 
 }
