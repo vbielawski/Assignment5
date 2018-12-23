@@ -17,27 +17,27 @@ public class ScoresCounter implements YahtzeeConstants {
 		case TWOS:
 			for (int i = 0; i < array.length; i++) {
 				if (array[i] == 2)
-					sum += i;
+					sum += 2;
 			}
 		case THREES:
 			for (int i = 0; i < array.length; i++) {
 				if (array[i] == 3)
-					sum += i;
+					sum += 3;
 			}
 		case FOURS:
 			for (int i = 0; i < array.length; i++) {
 				if (array[i] == 4)
-					sum += i;
+					sum += 4;
 			}
 		case FIVES:
 			for (int i = 0; i < array.length; i++) {
 				if (array[i] == 5)
-					sum += i;
+					sum += 5;
 			}
 		case SIXES:
 			for (int i = 0; i < array.length; i++) {
 				if (array[i] == 6)
-					sum += i;
+					sum += 6;
 			}
 		}
 		return sum;
@@ -106,7 +106,5 @@ public class ScoresCounter implements YahtzeeConstants {
 		int sum = 0;
 		return sum;
 	}
-
-	
 
 }
