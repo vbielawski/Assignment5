@@ -146,7 +146,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 
 	private void setCategorySelected(int category, int player) {
-
+		selected[category - 1][player - 1] = true;
 	}
 
 	private void populateTable(int rows, int colomns) {
