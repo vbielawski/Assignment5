@@ -135,25 +135,11 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			flag = true;
 		} else if (checker.isFullHouse(array) && category == FULL_HOUSE) {
 			flag = true;
-		} else if (category == SMALL_STRAIGHT) {
-			checker.isSmallStraight(array);
-			int counter = 1;
-			for(int i = 0; i < array.length - 1; i++) {
-				if(checker.isStraightM(i, i+1, array)) {
-					counter++;
-				}
-			}
-			System.out.println(counter);
+		} else if (checker.isSmallStraight(array) && category == SMALL_STRAIGHT) {
+			System.out.println(array);
 			flag = true;
-		} else if (category == LARGE_STRAIGHT) {
-			checker.isLargeStraight(array);
-			int counter = 1;
-			for(int i = 0; i < array.length - 1; i++) {
-				if(checker.isStraightM(i, i+1, array)) {
-					counter++;
-				}
-			}
-			System.out.println(counter);
+		} else if (checker.isLargeStraight(array) && category == LARGE_STRAIGHT) {
+			System.out.println(array);
 			flag = true;
 		} else if (checker.isYahtzee(array) && category == YAHTZEE) {
 			flag = true;
@@ -186,22 +172,22 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			case FOURS:
 			case FIVES:
 			case SIXES:
-				score = counter.getScoreOneSix(category, array);
+				score = scorescounter.getScoreOneSix(category, array);
 
 			case THREE_OF_A_KIND:
-				score = counter.getThreeOfAKindScore(array);
+				score = scorescounter.getThreeOfAKindScore(array);
 			case FOUR_OF_A_KIND:
-				score = counter.getFourOfAKindScore(array);
+				score = scorescounter.getFourOfAKindScore(array);
 			case SMALL_STRAIGHT:
-				score = counter.getSmallStraightScore(array);
+				score = scorescounter.getSmallStraightScore(array);
 			case LARGE_STRAIGHT:
-				score = counter.getLargeStraightScore(array);
+				score = scorescounter.getLargeStraightScore(array);
 			case FULL_HOUSE:
-				score = counter.getFullHouseScore(array);
+				score = scorescounter.getFullHouseScore(array);
 			case YAHTZEE:
-				score = counter.getYahtzeeScore(array);
+				score = scorescounter.getYahtzeeScore(array);
 			case CHANCE:
-				score = counter.getChanceScore(array);
+				score = scorescounter.getChanceScore(array);
 
 			}
 
@@ -231,12 +217,11 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 
 	/* Private instance variables */
-	ScoresCounter counter = new ScoresCounter();
+	ScoresCounter scorescounter = new ScoresCounter();
 	private int nPlayers; // number of players
 	private static int[] dice; // array of dice elements
 	private String[] playerNames; // array of strings containing player names
 	private YahtzeeDisplay display; // instance of the YahtzeeDisplay class
 	private RandomGenerator rgen = new RandomGenerator(); // instance of a random generator
-	
 
 }
