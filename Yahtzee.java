@@ -131,6 +131,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 	
 	private void populateTable(int rows, int colomns) {
+		selected = new boolean[rows][colomns];
 		for(int i = 0; i < rows; i++) {
 			for(int j = 0; j < colomns; j++) {
 				selected[i][j] = false;
