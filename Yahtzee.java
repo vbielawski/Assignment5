@@ -134,6 +134,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		} else if (checker.isFourOfAKind(array) && category == FOUR_OF_A_KIND) {
 			flag = true;
 		} else if (checker.isFullHouse(array) && category == FULL_HOUSE) {
+			System.out.println(Arrays.toString(array));
 			flag = true;
 		} else if (checker.isSmallStraight(array) && category == SMALL_STRAIGHT) {
 			System.out.println(Arrays.toString(array));
@@ -172,20 +173,20 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			case FOURS:
 			case FIVES:
 			case SIXES:
-				score = scorescounter.getScoreOneSix(category, array);
+				score = scorescounter.getScoreOneSix(int category,array);
 
 			case THREE_OF_A_KIND:
 				score = scorescounter.getThreeOfAKindScore(array);
 			case FOUR_OF_A_KIND:
 				score = scorescounter.getFourOfAKindScore(array);
 			case SMALL_STRAIGHT:
-				score = scorescounter.getSmallStraightScore(array);
+				score = scorescounter.getSmallStraightScore();
 			case LARGE_STRAIGHT:
-				score = scorescounter.getLargeStraightScore(array);
+				score = scorescounter.getLargeStraightScore();
 			case FULL_HOUSE:
-				score = scorescounter.getFullHouseScore(array);
+				score = scorescounter.getFullHouseScore();
 			case YAHTZEE:
-				score = scorescounter.getYahtzeeScore(array);
+				score = scorescounter.getYahtzeeScore();
 			case CHANCE:
 				score = scorescounter.getChanceScore(array);
 
