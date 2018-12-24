@@ -61,18 +61,21 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		while (true) {
 			for (int player = 1; player <= nPlayers; player++) {
 				dice = generateDice(N_DICE); // generate initials dice values
-
+				display.printMessage(playerNames[player] + "'s turn! Click 'Roll Dice' Button to roll the dice! ");
+				
 				display.waitForPlayerToClickRoll(player);
 				display.displayDice(dice);
 
 				for (int i = 0; i < 2; i++) {
+					display.printMessage("Select the dice you wish to re-roll and click 'Roll again'!");
 					nextRollsCall();
+					
 				}
 
 //			display.waitForPlayerToSelectDice();
 //			rollSelected(dice);
 //			display.displayDice(dice);
-
+				display.printMessage("Select a category for this roll.");
 				int category = display.waitForPlayerToSelectCategory();
 				System.out.println(category);
 
@@ -81,8 +84,8 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 //				}
 
 				/*
-				 * category return integer from YahtzeeConstants interface, and player returns index
-				 * of a player, from 1 to number of players(including)
+				 * category return integer from YahtzeeConstants interface, and player returns
+				 * index of a player, from 1 to number of players(including)
 				 */
 				setCategorySelected(category, player);
 				// print2DArray();
@@ -94,7 +97,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				// System.out.println(score);
 
 				scorecard[category - 1][player - 1] = score;
-				//System.out.print(Arrays.toString(scorecard));
+				// System.out.print(Arrays.toString(scorecard));
 				printGrid();
 				display.updateScorecard(category, player, score);
 
@@ -107,32 +110,29 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 			if (steps == 0) {
 				sumScores();
-				//break;
+				// break;
 			}
 			printResult();
-			//break;
+			// break;
 
 		}
 
 	}
-	
-	public void printGrid()
-	{
-	   for(int i = 0; i < N_CATEGORIES; i++)
-	   {
-	      for(int j = 0; j < nPlayers; j++)
-	      {
-	         System.out.printf("%5d ", scorecard[i][j]);
-	      }
-	      System.out.println();
-	   }
+
+	public void printGrid() {
+		for (int i = 0; i < N_CATEGORIES; i++) {
+			for (int j = 0; j < nPlayers; j++) {
+				System.out.printf("%5d ", scorecard[i][j]);
+			}
+			System.out.println();
+		}
 	}
 
 	private int findWinnerIndex() {
-		int maximum = scorecard[TOTAL-1][0];
+		int maximum = scorecard[TOTAL - 1][0];
 		int index = 0;
-		for (int i = 0; i < scorecard[TOTAL-1].length; i++) {
-			if (scorecard[TOTAL-1][i] > maximum) {
+		for (int i = 0; i < scorecard[TOTAL - 1].length; i++) {
+			if (scorecard[TOTAL - 1][i] > maximum) {
 				index = i;
 			}
 		}
@@ -153,7 +153,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private void printResult() {
 		int winnerindex = findWinnerIndex();
 		String name = playerNames[winnerindex];
-		int total = scorecard[TOTAL-1][winnerindex];
+		int total = scorecard[TOTAL - 1][winnerindex];
 		display.printMessage("Congratulations, " + name + ", you are the winner with a total score of " + total + "!");
 	}
 
@@ -214,13 +214,13 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		} else if (checker.isFourOfAKind(array) && category == FOUR_OF_A_KIND) {
 			flag = true;
 		} else if (checker.isFullHouse(array) && category == FULL_HOUSE) {
-			//System.out.println(Arrays.toString(array));
+			// System.out.println(Arrays.toString(array));
 			flag = true;
 		} else if (checker.isSmallStraight(array) && category == SMALL_STRAIGHT) {
-			//System.out.println(Arrays.toString(array));
+			// System.out.println(Arrays.toString(array));
 			flag = true;
 		} else if (checker.isLargeStraight(array) && category == LARGE_STRAIGHT) {
-			//System.out.println(Arrays.toString(array));
+			// System.out.println(Arrays.toString(array));
 			flag = true;
 		} else if (checker.isYahtzee(array) && category == YAHTZEE) {
 			flag = true;
