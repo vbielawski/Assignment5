@@ -99,9 +99,11 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 			if (steps == 0) {
 				sumScores();
+				break;
 			}
-			printResult();
+
 		}
+		printResult();
 
 	}
 
@@ -139,44 +141,32 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 
 	private void sumScores() {
-		for(players) {
+		for(int i = 1; i <= nPlayers; i++) {
 			int upperscore = 0;
-			display.updateScorecard(category, player, score);
-			if(upperscore >= 63) {
-				int bonus = 0;
-				display.updateScorecard(category, player, score);
+			for(int j = ONES; j <= SIXES; j++) {
+				upperscore += scorecard[i-1][j-1];
 			}
-			int buttom = 0;
-			display.updateScorecard(category, player, score);
-			int total = buttom + upper + bonus;
-			display.updateScorecard(category, player, score);
+			display.updateScorecard(UPPER_SCORE, i, upperscore);
+			int bonus = 35;
+			int upperbonus = 0;
+			if(upperscore >= 63) {
+				display.updateScorecard(UPPER_BONUS, i, bonus);
+				upperbonus = bonus;
+			} else {
+				display.updateScorecard(UPPER_BONUS, i, 0);
+			}
+			int lowerscore = 0;
+			for(int k = THREE_OF_A_KIND; k <= CHANCE; k++ ) {
+				lowerscore += scorecard[i-1][k-1];
+			}
+			display.updateScorecard(LOWER_SCORE, i, lowerscore);
+			int total = upperscore + upperbonus + lowerscore;
+			display.updateScorecard(TOTAL, i, total);
 		}
-		sumUpper();
-		writeBonus();
-		sumBottom();
-		sumTotal();
+		
 	}
 
-	private void sumBottom() {
-		// TODO Auto-generated method stub
-
-	}
-
-	private void sumTotal() {
-		// TODO Auto-generated method stub
-
-	}
-
-	private void writeBonus() {
-		// TODO Auto-generated method stub
-
-	}
-
-	private int sumUpper() {
-		// TODO Auto-generated method stub
-		return uppersum;
-	}
-
+	
 	private void setCategorySelected(int category, int player) {
 		selected[category - 1][player - 1] = true;
 	}
