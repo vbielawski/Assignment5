@@ -80,13 +80,13 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 //				}
 
 				setCategorySelected(category, player);
-				print2DArray();
+				//print2DArray();
 
 				boolean isRelevant = checkCategory(category, dice);
 				System.out.println(isRelevant);
 				// boolean corresponds = checker.isOneToSix(dice, category);
 				int score = countScores(category, isRelevant, dice);
-				System.out.println(score);
+				//System.out.println(score);
 
 				scorecard[category - 1][player - 1] = score;
 				display.updateScorecard(category, player, score);
@@ -95,6 +95,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				display.printMessage(message);
 
 				steps--;
+				System.out.println(steps);
 			}
 
 			if (steps == 0) {
