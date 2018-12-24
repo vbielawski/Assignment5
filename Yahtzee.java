@@ -213,13 +213,13 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		} else if (checker.isFourOfAKind(array) && category == FOUR_OF_A_KIND) {
 			flag = true;
 		} else if (checker.isFullHouse(array) && category == FULL_HOUSE) {
-			System.out.println(Arrays.toString(array));
+			//System.out.println(Arrays.toString(array));
 			flag = true;
 		} else if (checker.isSmallStraight(array) && category == SMALL_STRAIGHT) {
-			System.out.println(Arrays.toString(array));
+			//System.out.println(Arrays.toString(array));
 			flag = true;
 		} else if (checker.isLargeStraight(array) && category == LARGE_STRAIGHT) {
-			System.out.println(Arrays.toString(array));
+			//System.out.println(Arrays.toString(array));
 			flag = true;
 		} else if (checker.isYahtzee(array) && category == YAHTZEE) {
 			flag = true;
