@@ -57,7 +57,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 	private void playGame() {
 		/* Play Yahtzee game */
-		int steps = N_CATEGORIES * nPlayers;
+		int steps = N_SCORING_CATEGORIES * nPlayers;
 		while (true) {
 			for (int player = 1; player <= nPlayers; player++) {
 				dice = generateDice(N_DICE); // generate initials dice values
