@@ -129,10 +129,12 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 
 	private int findWinnerIndex() {
-		int maximum = scorecard[TOTAL - 1][0];
 		int index = 0;
-		for (int i = 0; i < scorecard[TOTAL - 1].length; i++) {
+		int maximum = scorecard[TOTAL - 1][index];
+		int width = scorecard[0].length;
+		for (int i = 0; i < width ; i++) {
 			if (scorecard[TOTAL - 1][i] > maximum) {
+				maximum = scorecard[TOTAL - 1][i];
 				index = i;
 			}
 		}
