@@ -100,10 +100,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				// System.out.print(Arrays.toString(scorecard));
 				printGrid();
 				display.updateScorecard(category, player, score);
-
-				String message = "Score = " + score;
-				display.printMessage(message);
-
+				
 				steps--;
 				System.out.println(steps);
 			}
