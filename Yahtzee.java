@@ -80,16 +80,21 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 //					display.printMessage("This category is already selected, try another!");
 //				}
 
+				/*
+				 * category return integer from YahtzeeConstants interface, and player returns index
+				 * of a player, from 1 to number of players(including)
+				 */
 				setCategorySelected(category, player);
-				//print2DArray();
+				// print2DArray();
 
 				boolean isRelevant = checkCategory(category, dice);
 				System.out.println(isRelevant);
 				// boolean corresponds = checker.isOneToSix(dice, category);
 				int score = countScores(category, isRelevant, dice);
-				//System.out.println(score);
+				// System.out.println(score);
 
 				scorecard[category - 1][player - 1] = score;
+				System.out.println(Arrays.toString(scorecard));
 				display.updateScorecard(category, player, score);
 
 				String message = "Score = " + score;
@@ -143,32 +148,31 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 
 	private void sumScores() {
-		for(int i = 1; i <= nPlayers; i++) {
+		for (int i = 1; i <= nPlayers; i++) {
 			int upperscore = 0;
-			for(int j = ONES; j <= SIXES; j++) {
-				upperscore += scorecard[i-1][j-1];
+			for (int j = ONES; j <= SIXES; j++) {
+				upperscore += scorecard[i - 1][j - 1];
 			}
 			display.updateScorecard(UPPER_SCORE, i, upperscore);
 			int bonus = 35;
 			int upperbonus = 0;
-			if(upperscore >= 63) {
+			if (upperscore >= 63) {
 				display.updateScorecard(UPPER_BONUS, i, bonus);
 				upperbonus = bonus;
 			} else {
 				display.updateScorecard(UPPER_BONUS, i, 0);
 			}
 			int lowerscore = 0;
-			for(int k = THREE_OF_A_KIND; k <= CHANCE; k++ ) {
-				lowerscore += scorecard[i-1][k-1];
+			for (int k = THREE_OF_A_KIND; k <= CHANCE; k++) {
+				lowerscore += scorecard[i - 1][k - 1];
 			}
 			display.updateScorecard(LOWER_SCORE, i, lowerscore);
 			int total = upperscore + upperbonus + lowerscore;
 			display.updateScorecard(TOTAL, i, total);
 		}
-		
+
 	}
 
-	
 	private void setCategorySelected(int category, int player) {
 		selected[category - 1][player - 1] = true;
 	}
