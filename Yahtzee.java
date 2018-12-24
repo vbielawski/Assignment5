@@ -61,7 +61,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		while (true) {
 			for (int player = 1; player <= nPlayers; player++) {
 				dice = generateDice(N_DICE); // generate initials dice values
-				display.printMessage(playerNames[player] + "'s turn! Click 'Roll Dice' Button to roll the dice! ");
+				display.printMessage(playerNames[player-1] + "'s turn! Click 'Roll Dice' Button to roll the dice! ");
 				
 				display.waitForPlayerToClickRoll(player);
 				display.displayDice(dice);
