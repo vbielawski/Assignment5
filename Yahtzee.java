@@ -94,7 +94,8 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				// System.out.println(score);
 
 				scorecard[category - 1][player - 1] = score;
-				System.out.println(Arrays.toString(scorecard));
+				//System.out.print(Arrays.toString(scorecard));
+				printGrid();
 				display.updateScorecard(category, player, score);
 
 				String message = "Score = " + score;
@@ -112,6 +113,18 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		}
 		printResult();
 
+	}
+	
+	public void printGrid()
+	{
+	   for(int i = 0; i < N_CATEGORIES; i++)
+	   {
+	      for(int j = 0; j < nPlayers; j++)
+	      {
+	         System.out.printf("%5d ", scorecard[i][j]);
+	      }
+	      System.out.println();
+	   }
 	}
 
 	private int findWinnerIndex() {
