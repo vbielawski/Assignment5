@@ -183,12 +183,12 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		System.out.println(counter);
 	}
 
-	private void printResult() {
-		int winnerindex = findWinnerIndex(totals);
-		String name = playerNames[winnerindex];
-		int total = scorecard[TOTAL - 1][winnerindex];
-		display.printMessage("Congratulations, " + name + ", you are the winner with a total score of " + total + "!");
-	}
+//	private void printResult() {
+//		int winnerindex = findWinnerIndex(totals);
+//		String name = playerNames[winnerindex];
+//		int total = scorecard[TOTAL - 1][winnerindex];
+//		display.printMessage("Congratulations, " + name + ", you are the winner with a total score of " + total + "!");
+//	}
 
 	private boolean allCategoryIsSelected() {
 		return false;
