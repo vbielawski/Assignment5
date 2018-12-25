@@ -61,15 +61,15 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		while (true) {
 			for (int player = 1; player <= nPlayers; player++) {
 				dice = generateDice(N_DICE); // generate initials dice values
-				display.printMessage(playerNames[player-1] + "'s turn! Click 'Roll Dice' Button to roll the dice! ");
-				
+				display.printMessage(playerNames[player - 1] + "'s turn! Click 'Roll Dice' Button to roll the dice! ");
+
 				display.waitForPlayerToClickRoll(player);
 				display.displayDice(dice);
 
 				for (int i = 0; i < 2; i++) {
 					display.printMessage("Select the dice you wish to re-roll and click 'Roll again'!");
 					nextRollsCall();
-					
+
 				}
 
 //			display.waitForPlayerToSelectDice();
@@ -77,7 +77,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 //			display.displayDice(dice);
 				display.printMessage("Select a category for this roll.");
 				int category = display.waitForPlayerToSelectCategory();
-				//System.out.println(category);
+				// System.out.println(category);
 
 //				if(isAlreadyUpdated(category, player)) {
 //					display.printMessage("This category is already selected, try another!");
@@ -87,35 +87,38 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				 * category return integer from YahtzeeConstants interface, and player returns
 				 * index of a player, from 1 to number of players(including)
 				 */
-				if(!isAlreadyUpdated(category,player)) {
+				if (!isAlreadyUpdated(category, player)) {
 					setCategorySelected(category, player);
 				} else {
 					display.printMessage("Category is already selected, try another.");
 				}
-				
+
 				// print2DArray();
 
 				boolean isRelevant = checkCategory(category, dice);
-				//System.out.println(isRelevant);
+				// System.out.println(isRelevant);
 				// boolean corresponds = checker.isOneToSix(dice, category);
 				int score = countScores(category, isRelevant, dice);
 				// System.out.println(score);
 
 				scorecard[category - 1][player - 1] = score;
 				// System.out.print(Arrays.toString(scorecard));
-				//printGrid();
+				// printGrid();
 				display.updateScorecard(category, player, score);
-				
+
 				steps--;
 				System.out.println(steps);
 			}
 
 			if (steps == 0) {
 				sumScores();
-				printResult();
+				// printResult();
 				// break;
+				int winner = findWinnerIndex(totals);
+				display.printMessage(
+						"Congrats " + playerNames[winner] + ", your score is " + scorecard[TOTAL - 1][winner]);
 			}
-			
+
 			// break;
 
 		}
@@ -135,15 +138,15 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 //		if(findFirstMax(totals) != findSecondMax(totals))
 		int index = 0;
 		int maximum = arr[index];
-		for(int i = 0; i < arr.length; i++) {
-			if(arr[i] > maximum) {
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] > maximum) {
 				maximum = arr[i];
 				index = i;
 			}
 		}
 		return index;
 	}
-	
+
 //	private int findFirstMax(int[] arr) {
 //		int max = arr[0];
 //		int maxindex = 0;
@@ -194,13 +197,19 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private void sumScores() {
 		totals = new int[nPlayers];
 		for (int i = 1; i <= nPlayers; i++) {
+			/*
+			 * sum and update upper score
+			 */
 			int upperscore = 0;
 			for (int j = ONES; j <= SIXES; j++) {
 				upperscore += scorecard[j - 1][i - 1];
 			}
 			scorecard[UPPER_SCORE - 1][i - 1] = upperscore;
 			display.updateScorecard(UPPER_SCORE, i, upperscore);
-			
+			/*
+			 * write bonus if upperscore is equal or more than 63, bonus point is 35.update
+			 * scorecard and corresponding indexes in scores array
+			 */
 			int bonus = 35;
 			int upperbonus = 0;
 			if (upperscore >= 63) {
@@ -209,19 +218,19 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			} else {
 				display.updateScorecard(UPPER_BONUS, i, 0);
 			}
-			scorecard[UPPER_BONUS - 1][i - 1] = upperscore;
-			
+			scorecard[UPPER_BONUS - 1][i - 1] = upperbonus;
+
 			int lowerscore = 0;
 			for (int k = THREE_OF_A_KIND; k <= CHANCE; k++) {
 				lowerscore += scorecard[k - 1][i - 1];
 			}
 			display.updateScorecard(LOWER_SCORE, i, lowerscore);
-			scorecard[LOWER_SCORE - 1][i - 1] = upperscore;
-			
+			scorecard[LOWER_SCORE - 1][i - 1] = lowerscore;
+
 			int total = upperscore + upperbonus + lowerscore;
-			totals[i - 1] = total; 
+			totals[i - 1] = total;
 			display.updateScorecard(TOTAL, i, total);
-			scorecard[TOTAL - 1][i - 1] = upperscore;
+			scorecard[TOTAL - 1][i - 1] = total;
 		}
 
 	}
