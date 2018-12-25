@@ -77,7 +77,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 //			display.displayDice(dice);
 				display.printMessage("Select a category for this roll.");
 				int category = display.waitForPlayerToSelectCategory();
-				System.out.println(category);
+				//System.out.println(category);
 
 //				if(isAlreadyUpdated(category, player)) {
 //					display.printMessage("This category is already selected, try another!");
@@ -87,18 +87,23 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				 * category return integer from YahtzeeConstants interface, and player returns
 				 * index of a player, from 1 to number of players(including)
 				 */
-				setCategorySelected(category, player);
+				if(!isAlreadyUpdated(category,player)) {
+					setCategorySelected(category, player);
+				} else {
+					display.printMessage("Category is already selected, try another.");
+				}
+				
 				// print2DArray();
 
 				boolean isRelevant = checkCategory(category, dice);
-				System.out.println(isRelevant);
+				//System.out.println(isRelevant);
 				// boolean corresponds = checker.isOneToSix(dice, category);
 				int score = countScores(category, isRelevant, dice);
 				// System.out.println(score);
 
 				scorecard[category - 1][player - 1] = score;
 				// System.out.print(Arrays.toString(scorecard));
-				printGrid();
+				//printGrid();
 				display.updateScorecard(category, player, score);
 				
 				steps--;
