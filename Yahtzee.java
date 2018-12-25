@@ -114,9 +114,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				sumScores();
 				// printResult();
 				// break;
-				int winner = findWinnerIndex(totals);
-				display.printMessage(
-						"Congrats " + playerNames[winner] + ", your score is " + scorecard[TOTAL - 1][winner]);
+				
 			}
 
 			// break;
@@ -231,7 +229,11 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			totals[i - 1] = total;
 			display.updateScorecard(TOTAL, i, total);
 			scorecard[TOTAL - 1][i - 1] = total;
+				
 		}
+		int winner = findWinnerIndex(totals);
+		display.printMessage(
+				"Congrats " + playerNames[winner] + ", your score is " + scorecard[TOTAL - 1][winner]);
 
 	}
 
