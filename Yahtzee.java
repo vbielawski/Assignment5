@@ -114,6 +114,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				sumScores();
 				// printResult();
 				// break;
+			if(steps == 0)
 				findWinner();
 				
 			}
