@@ -114,6 +114,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				sumScores();
 				// printResult();
 				// break;
+				findWinner();
 				
 			}
 
@@ -132,17 +133,18 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		}
 	}
 
-	private int findWinnerIndex(int arr[]) {
+	private void findWinner() {
 //		if(findFirstMax(totals) != findSecondMax(totals))
 		int index = 0;
-		int maximum = arr[index];
-		for (int i = 0; i < arr.length; i++) {
-			if (arr[i] > maximum) {
-				maximum = arr[i];
-				index = i;
+		int maximum = 0;
+		for (int i = 1; i <= nPlayers; i++) {
+			int x = totals[i - 1];
+			if(x > maximum) {
+				maximum = totals[i - 1];
+				index = i - 1;
 			}
 		}
-		return index;
+		display.printMessage("Congrats, " + playerNames[index] + ", you are the winner with the total score of " + maximum +"!");;
 	}
 
 //	private int findFirstMax(int[] arr) {
@@ -231,9 +233,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			scorecard[TOTAL - 1][i - 1] = total;
 				
 		}
-		int winner = findWinnerIndex(totals);
-		display.printMessage(
-				"Congrats " + playerNames[winner] + ", your score is " + scorecard[TOTAL - 1][winner]);
+		
 
 	}
 
