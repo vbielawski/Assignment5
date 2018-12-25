@@ -58,7 +58,8 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private void playGame() {
 		/* Play Yahtzee game */
 		int steps = N_SCORING_CATEGORIES * nPlayers;
-		while (true) {
+//		
+		for(int n = 0; n < N_SCORING_CATEGORIES; n++) {
 			for (int player = 1; player <= nPlayers; player++) {
 				dice = generateDice(N_DICE); // generate initials dice values
 				display.printMessage(playerNames[player - 1] + "'s turn! Click 'Roll Dice' Button to roll the dice! ");
@@ -110,18 +111,18 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				System.out.println(steps);
 			}
 
-			if (steps == 0) {
-				sumScores();
-				// printResult();
-				// break;
-			if(steps == 0)
-				findWinner();
-				
-			}
+//			if (steps == 0) {
+//				sumScores();
+//				// printResult();
+//				
+//				// break;
+//			}
 
 			// break;
 
 		}
+		sumScores();
+		findWinner();
 
 	}
 
