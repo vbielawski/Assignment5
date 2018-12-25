@@ -132,16 +132,41 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 
 	private int findWinnerIndex() {
+//		if(findFirstMax(totals) != findSecondMax(totals))
 		int index = 0;
-		int maximum = scorecard[TOTAL - 1][index];
-		int width = scorecard[0].length;
-		for (int i = 0; i < width ; i++) {
-			if (scorecard[TOTAL - 1][i] > maximum) {
-				maximum = scorecard[TOTAL - 1][i];
+		int maximum = totals[index];
+		for(int i = 0; i < totals.length; i++) {
+			if(totals[i] > maximum) {
+				maximum = totals[i];
 				index = i;
 			}
 		}
 		return index;
+	}
+	
+	private int findFirstMax(int[] arr) {
+		int max = arr[0];
+		int maxindex = 0;
+		for(int i = 0; i < arr.length; i++) {
+			if(arr[i] > max) {
+				max = arr[i];
+				maxindex = i;
+			}
+		}
+		return maxindex;
+	}
+	
+	private int findSecondMax(int[] arr) {
+		int maxindex = findFirstMax(arr);
+		int secendmax = arr[0];
+		int secindex = 0;
+		for(int i = 0; i < arr.length; i++) {
+			if(arr[i] > secendmax && arr[i] < arr[maxindex]) {
+				secendmax = arr[i];
+				secindex = i;
+			}
+		}
+		return secindex;
 	}
 
 	private void print2DArray() {
@@ -167,6 +192,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 
 	private void sumScores() {
+		totals = new int[nPlayers];
 		for (int i = 1; i <= nPlayers; i++) {
 			int upperscore = 0;
 			for (int j = ONES; j <= SIXES; j++) {
@@ -187,6 +213,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			}
 			display.updateScorecard(LOWER_SCORE, i, lowerscore);
 			int total = upperscore + upperbonus + lowerscore;
+			totals[i - 1] = total; 
 			display.updateScorecard(TOTAL, i, total);
 		}
 
@@ -331,5 +358,6 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private RandomGenerator rgen = new RandomGenerator(); // instance of a random generator
 	private boolean[][] selected;
 	private int[][] scorecard;
+	private int[] totals;
 
 }
