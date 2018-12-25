@@ -131,43 +131,43 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		}
 	}
 
-	private int findWinnerIndex() {
+	private int findWinnerIndex(int arr[]) {
 //		if(findFirstMax(totals) != findSecondMax(totals))
 		int index = 0;
-		int maximum = totals[index];
-		for(int i = 0; i < totals.length; i++) {
-			if(totals[i] > maximum) {
-				maximum = totals[i];
+		int maximum = arr[index];
+		for(int i = 0; i < arr.length; i++) {
+			if(arr[i] > maximum) {
+				maximum = arr[i];
 				index = i;
 			}
 		}
 		return index;
 	}
 	
-	private int findFirstMax(int[] arr) {
-		int max = arr[0];
-		int maxindex = 0;
-		for(int i = 0; i < arr.length; i++) {
-			if(arr[i] > max) {
-				max = arr[i];
-				maxindex = i;
-			}
-		}
-		return maxindex;
-	}
-	
-	private int findSecondMax(int[] arr) {
-		int maxindex = findFirstMax(arr);
-		int secendmax = arr[0];
-		int secindex = 0;
-		for(int i = 0; i < arr.length; i++) {
-			if(arr[i] > secendmax && arr[i] < arr[maxindex]) {
-				secendmax = arr[i];
-				secindex = i;
-			}
-		}
-		return secindex;
-	}
+//	private int findFirstMax(int[] arr) {
+//		int max = arr[0];
+//		int maxindex = 0;
+//		for(int i = 0; i < arr.length; i++) {
+//			if(arr[i] > max) {
+//				max = arr[i];
+//				maxindex = i;
+//			}
+//		}
+//		return maxindex;
+//	}
+//	
+//	private int findSecondMax(int[] arr) {
+//		int maxindex = findFirstMax(arr);
+//		int secendmax = arr[0];
+//		int secindex = 0;
+//		for(int i = 0; i < arr.length; i++) {
+//			if(arr[i] > secendmax && arr[i] < arr[maxindex]) {
+//				secendmax = arr[i];
+//				secindex = i;
+//			}
+//		}
+//		return secindex;
+//	}
 
 	private void print2DArray() {
 		int counter = 0;
@@ -181,7 +181,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 
 	private void printResult() {
-		int winnerindex = findWinnerIndex();
+		int winnerindex = findWinnerIndex(totals);
 		String name = playerNames[winnerindex];
 		int total = scorecard[TOTAL - 1][winnerindex];
 		display.printMessage("Congratulations, " + name + ", you are the winner with a total score of " + total + "!");
