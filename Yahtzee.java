@@ -192,9 +192,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 //		display.printMessage("Congratulations, " + name + ", you are the winner with a total score of " + total + "!");
 //	}
 
-	private boolean allCategoryIsSelected() {
-		return false;
-	}
+	
 
 	private void sumScores() {
 		totals = new int[nPlayers];
@@ -240,11 +238,14 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 
 	private void setCategorySelected(int category, int player) {
-		selected[category - 1][player - 1] = true;
+		selected[category-1][player - 1] = true;
 	}
 
 	private boolean isAlreadyUpdated(int category, int player) {
-		return selected[category - 1][player - 1] == true;
+		if(selected[category-1][player - 1] == true) {
+			return true;
+		}
+		return false;
 	}
 
 	private void populateTable(int rows, int colomns) {
