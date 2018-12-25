@@ -198,7 +198,9 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			for (int j = ONES; j <= SIXES; j++) {
 				upperscore += scorecard[j - 1][i - 1];
 			}
+			scorecard[UPPER_SCORE - 1][i - 1] = upperscore;
 			display.updateScorecard(UPPER_SCORE, i, upperscore);
+			
 			int bonus = 35;
 			int upperbonus = 0;
 			if (upperscore >= 63) {
@@ -207,14 +209,19 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			} else {
 				display.updateScorecard(UPPER_BONUS, i, 0);
 			}
+			scorecard[UPPER_BONUS - 1][i - 1] = upperscore;
+			
 			int lowerscore = 0;
 			for (int k = THREE_OF_A_KIND; k <= CHANCE; k++) {
 				lowerscore += scorecard[k - 1][i - 1];
 			}
 			display.updateScorecard(LOWER_SCORE, i, lowerscore);
+			scorecard[LOWER_SCORE - 1][i - 1] = upperscore;
+			
 			int total = upperscore + upperbonus + lowerscore;
 			totals[i - 1] = total; 
 			display.updateScorecard(TOTAL, i, total);
+			scorecard[TOTAL - 1][i - 1] = upperscore;
 		}
 
 	}
