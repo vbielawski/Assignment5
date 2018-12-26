@@ -321,12 +321,18 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 
 	private void nextRollsCall() {
+		/*
+		 * method for next rolls
+		 */
 		display.waitForPlayerToSelectDice();
 		rollSelected(dice);
 		display.displayDice(dice);
 	}
 
 	private void rollSelected(int[] array) {
+		/*
+		 * if die is selected, it is re-rolled.
+		 */
 		for (int i = 0; i < array.length; i++)
 			if (display.isDieSelected(i)) {
 				array[i] = rgen.nextInt(1, array.length + 1);
@@ -334,6 +340,9 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 
 	private int[] generateDice(int size) {
+		/*
+		 * initial value of dice.
+		 */
 		int[] arr = new int[size];
 		for (int i = 0; i < size; i++) {
 			arr[i] = rgen.nextInt(1, size + 1);
@@ -342,14 +351,14 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 
 	/* Private instance variables */
-	ScoresCounter scorescounter = new ScoresCounter();
+	ScoresCounter scorescounter = new ScoresCounter(); // instance of the ScoreCounter class
 	private int nPlayers; // number of players
 	private static int[] dice; // array of dice elements
 	private String[] playerNames; // array of strings containing player names
 	private YahtzeeDisplay display; // instance of the YahtzeeDisplay class
 	private RandomGenerator rgen = new RandomGenerator(); // instance of a random generator
-	private boolean[][] selected;
-	private int[][] scorecard;
-	private int[] totals;
+	private boolean[][] selected; // for saving selected categories
+	private int[][] scorecard; // scorecard saver
+	private int[] totals; // only total scores saver
 
 }
