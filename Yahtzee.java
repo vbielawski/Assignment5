@@ -59,7 +59,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		/* Play Yahtzee game */
 		int steps = N_SCORING_CATEGORIES * nPlayers;
 //		
-		for(int n = 0; n < N_SCORING_CATEGORIES; n++) {
+		for (int n = 0; n < N_SCORING_CATEGORIES; n++) {
 			for (int player = 1; player <= nPlayers; player++) {
 				dice = generateDice(N_DICE); // generate initials dice values
 				display.printMessage(playerNames[player - 1] + "'s turn! Click 'Roll Dice' Button to roll the dice! ");
@@ -88,10 +88,14 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				 * category return integer from YahtzeeConstants interface, and player returns
 				 * index of a player, from 1 to number of players(including)
 				 */
-				if (!isAlreadyUpdated(category, player)) {
-					setCategorySelected(category, player);
-				} else {
-					display.printMessage("Category is already selected, try another.");
+				while (true) {
+					if (!isAlreadyUpdated(category, player)) {
+						setCategorySelected(category, player);
+					} else {
+						display.printMessage("Category is already selected, try another.");
+						
+					}
+					break;
 				}
 
 				// print2DArray();
@@ -141,12 +145,14 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		int maximum = 0;
 		for (int i = 1; i <= nPlayers; i++) {
 			int x = totals[i - 1];
-			if(x > maximum) {
+			if (x > maximum) {
 				maximum = totals[i - 1];
 				index = i - 1;
 			}
 		}
-		display.printMessage("Congrats, " + playerNames[index] + ", you are the winner with the total score of " + maximum +"!");;
+		display.printMessage(
+				"Congrats, " + playerNames[index] + ", you are the winner with the total score of " + maximum + "!");
+		;
 	}
 
 //	private int findFirstMax(int[] arr) {
@@ -192,8 +198,6 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 //		display.printMessage("Congratulations, " + name + ", you are the winner with a total score of " + total + "!");
 //	}
 
-	
-
 	private void sumScores() {
 		totals = new int[nPlayers];
 		for (int i = 1; i <= nPlayers; i++) {
@@ -231,18 +235,17 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			totals[i - 1] = total;
 			display.updateScorecard(TOTAL, i, total);
 			scorecard[TOTAL - 1][i - 1] = total;
-				
+
 		}
-		
 
 	}
 
 	private void setCategorySelected(int category, int player) {
-		selected[category-1][player - 1] = true;
+		selected[category - 1][player - 1] = true;
 	}
 
 	private boolean isAlreadyUpdated(int category, int player) {
-		if(selected[category-1][player - 1] == true) {
+		if (selected[category - 1][player - 1] == true) {
 			return true;
 		}
 		return false;
