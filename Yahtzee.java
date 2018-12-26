@@ -72,14 +72,14 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 				display.waitForPlayerToClickRoll(player);
 				display.displayDice(dice);
-				
+
 				// re-roll of dices
 				for (int i = 0; i < 2; i++) {
 					display.printMessage("Select the dice you wish to re-roll and click 'Roll again'!");
 					nextRollsCall();
 
 				}
-					
+
 				display.printMessage("Select a category for this roll.");
 
 				category = display.waitForPlayerToSelectCategory();
@@ -90,34 +90,18 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 				}
 
-				// int category = display.waitForPlayerToSelectCategory();
-
-				// System.out.println(category);
-
-//				if(isAlreadyUpdated(category, player)) {
-//					display.printMessage("This category is already selected, try another!");
-//				}
-
 				/*
 				 * category return integer from YahtzeeConstants interface, and player returns
 				 * index of a player, from 1 to number of players(including)
 				 */
-
-				// print2DArray();
-
 				boolean isRelevant = checkCategory(category, dice);
-				// System.out.println(isRelevant);
-				// boolean corresponds = checker.isOneToSix(dice, category);
 				int score = countScores(category, isRelevant, dice);
-				// System.out.println(score);
 
 				scorecard[category - 1][player - 1] = score;
-				// System.out.print(Arrays.toString(scorecard));
-				// printGrid();
 				display.updateScorecard(category, player, score);
 
-				steps--;
-				System.out.println(steps);
+//				steps--;
+//				System.out.println(steps);
 			}
 
 //			if (steps == 0) {
@@ -135,16 +119,20 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 	}
 
-	public void printGrid() {
-		for (int i = 0; i < N_CATEGORIES; i++) {
-			for (int j = 0; j < nPlayers; j++) {
-				System.out.printf("%5d ", scorecard[i][j]);
-			}
-			System.out.println();
-		}
-	}
+//	public void printGrid() {
+//		for (int i = 0; i < N_CATEGORIES; i++) {
+//			for (int j = 0; j < nPlayers; j++) {
+//				System.out.printf("%5d ", scorecard[i][j]);
+//			}
+//			System.out.println();
+//		}
+//	}
 
 	private void findWinner() {
+		/*
+		 * Method finds the index of a winner player, corresponding score and updates
+		 * display
+		 */
 //		if(findFirstMax(totals) != findSecondMax(totals))
 		int index = 0;
 		int maximum = 0;
@@ -160,50 +148,12 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		;
 	}
 
-//	private int findFirstMax(int[] arr) {
-//		int max = arr[0];
-//		int maxindex = 0;
-//		for(int i = 0; i < arr.length; i++) {
-//			if(arr[i] > max) {
-//				max = arr[i];
-//				maxindex = i;
-//			}
-//		}
-//		return maxindex;
-//	}
-//	
-//	private int findSecondMax(int[] arr) {
-//		int maxindex = findFirstMax(arr);
-//		int secendmax = arr[0];
-//		int secindex = 0;
-//		for(int i = 0; i < arr.length; i++) {
-//			if(arr[i] > secendmax && arr[i] < arr[maxindex]) {
-//				secendmax = arr[i];
-//				secindex = i;
-//			}
-//		}
-//		return secindex;
-//	}
-
-	private void print2DArray() {
-		int counter = 0;
-		for (int i = 0; i < scorecard.length; i++) {
-			for (int j = 0; j < scorecard[0].length; j++) {
-				System.out.println(scorecard[i][j]);
-				counter++;
-			}
-		}
-		System.out.println(counter);
-	}
-
-//	private void printResult() {
-//		int winnerindex = findWinnerIndex(totals);
-//		String name = playerNames[winnerindex];
-//		int total = scorecard[TOTAL - 1][winnerindex];
-//		display.printMessage("Congratulations, " + name + ", you are the winner with a total score of " + total + "!");
-//	}
-
 	private void sumScores() {
+		/*
+		 * method is called, when all possible categories are selected, it sums
+		 * upperscore, writes a bonus if possible, calculates lowerscore and total. it
+		 * saves the scores in integer array
+		 */
 		totals = new int[nPlayers];
 		for (int i = 1; i <= nPlayers; i++) {
 			/*
@@ -227,7 +177,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			} else {
 				display.updateScorecard(UPPER_BONUS, i, 0);
 			}
-			scorecard[UPPER_BONUS - 1][i - 1] = upperbonus;
+			scorecard[UPPER_BONUS - 1][i - 1] = upperbonus; // write in array
 
 			int lowerscore = 0;
 			for (int k = THREE_OF_A_KIND; k <= CHANCE; k++) {
@@ -245,10 +195,16 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 	}
 
+	/*
+	 * whenever category is selected, information is updated in boolean array
+	 */
 	private void setCategorySelected(int row, int col, boolean[][] arr) {
 		arr[row - 1][col - 1] = true;
 	}
 
+	/*
+	 * checks whether the category has been selected previously
+	 */
 	private boolean isAlreadyUpdated(int row, int col, boolean[][] arr) {
 		if (arr[row][col - 1] == true) {
 			return true;
@@ -256,6 +212,9 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		return false;
 	}
 
+	/*
+	 * initialises boolean array with default values.
+	 */
 	private boolean[][] populateTable(int rows, int colomns) {
 		boolean arr[][] = new boolean[rows][colomns];
 		for (int i = 0; i < rows; i++) {
@@ -267,22 +226,24 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 
 	private boolean checkCategory(int category, int[] array) {
+		/*
+		 * checkCategory() method checks whether received argument corresponds the terms
+		 * of categories with the given array values. This method uses helper
+		 * class: @CategoryCecker, creates instance of this class and calls it's
+		 * methods.
+		 */
 		CategoryChecker checker = new CategoryChecker();
 		boolean flag = false;
-//		if (checker.isOneToSix(array, category)) {
-//			flag = true;
+
 		if (checker.isThreeOfAKind(array) && category == THREE_OF_A_KIND) {
 			flag = true;
 		} else if (checker.isFourOfAKind(array) && category == FOUR_OF_A_KIND) {
 			flag = true;
 		} else if (checker.isFullHouse(array) && category == FULL_HOUSE) {
-			// System.out.println(Arrays.toString(array));
 			flag = true;
 		} else if (checker.isSmallStraight(array) && category == SMALL_STRAIGHT) {
-			// System.out.println(Arrays.toString(array));
 			flag = true;
 		} else if (checker.isLargeStraight(array) && category == LARGE_STRAIGHT) {
-			// System.out.println(Arrays.toString(array));
 			flag = true;
 		} else if (checker.isYahtzee(array) && category == YAHTZEE) {
 			flag = true;
@@ -306,12 +267,13 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 
 	private int countScores(int category, boolean isRight, int[] array) {
-
+		/*
+		 * Method receives category and boolean value about its state, if it is true,
+		 * method returns the score for given category, 0 otherwise.
+		 */
 		int score = 0;
 		if (isRight) {
 			switch (category) {
-			// case CHANCE:
-
 			case ONES:
 				score = scorescounter.getOnes(array);
 				break;
