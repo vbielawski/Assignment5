@@ -13,8 +13,6 @@ import acm.util.*;
 
 public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
-	// ScoresCounter scores = new ScoresCounter();
-
 	public static void main(String[] args) {
 		new Yahtzee().start(args);
 
@@ -22,14 +20,18 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 	public void run() {
 
-		readPlayers();
+		readPlayers(); // read and initialise players
 
 		display = new YahtzeeDisplay(getGCanvas(), playerNames);
 
-		playGame();
+		playGame(); // gives the player opportunity to play yahtzee game
 
 	}
 
+	/*
+	 * method reads number of players and names from console and writes them in
+	 * array
+	 */
 	private void readPlayers() {
 		IODialog dialog = getDialog();
 
@@ -50,15 +52,19 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		 * populates boolean tables with default values, table is used for saving the
 		 * category selected by current player.
 		 */
-		selected = populateTable(N_CATEGORIES, nPlayers);
-		scorecard = new int[N_CATEGORIES][nPlayers];
+		selected = populateTable(N_CATEGORIES, nPlayers); // 2D array of booleans
+		scorecard = new int[N_CATEGORIES][nPlayers]; // 2D array of integers
 
 	}
 
 	private void playGame() {
 		/* Play Yahtzee game */
-		int steps = N_SCORING_CATEGORIES * nPlayers;
+		// int steps = N_SCORING_CATEGORIES * nPlayers;
 		int category = 0;
+		/*
+		 * game goes on until all scoring categories are selected, then program sums all
+		 * scores, updates scorecard and prints the results.
+		 */
 		for (int n = 0; n < N_SCORING_CATEGORIES; n++) {
 			for (int player = 1; player <= nPlayers; player++) {
 				dice = generateDice(N_DICE); // generate initials dice values
@@ -66,30 +72,26 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 				display.waitForPlayerToClickRoll(player);
 				display.displayDice(dice);
-
+				
+				// re-roll of dices
 				for (int i = 0; i < 2; i++) {
 					display.printMessage("Select the dice you wish to re-roll and click 'Roll again'!");
 					nextRollsCall();
 
 				}
-
-//			display.waitForPlayerToSelectDice();
-//			rollSelected(dice);
-//			display.displayDice(dice);
+					
 				display.printMessage("Select a category for this roll.");
-				
-				
+
+				category = display.waitForPlayerToSelectCategory();
 				if (!(isAlreadyUpdated(category, player, selected))) {
-					category = display.waitForPlayerToSelectCategory();
 					setCategorySelected(category, player, selected);
 				} else {
 					display.printMessage("Category is already selected, try another.");
-					
-					
+
 				}
-				
-				//int category = display.waitForPlayerToSelectCategory();
-				
+
+				// int category = display.waitForPlayerToSelectCategory();
+
 				// System.out.println(category);
 
 //				if(isAlreadyUpdated(category, player)) {
@@ -100,10 +102,6 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				 * category return integer from YahtzeeConstants interface, and player returns
 				 * index of a player, from 1 to number of players(including)
 				 */
-				
-					
-					
-				
 
 				// print2DArray();
 
