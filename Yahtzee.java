@@ -252,7 +252,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 
 	private boolean isAlreadyUpdated(int row, int col, boolean[][] arr) {
-		if (arr[row - 1][col - 1] == true) {
+		if (arr[row][col - 1] == true) {
 			return true;
 		}
 		return false;
