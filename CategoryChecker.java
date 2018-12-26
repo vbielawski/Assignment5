@@ -105,10 +105,6 @@ public class CategoryChecker implements YahtzeeConstants {
 				seconds++;
 		}
 
-//		System.out.println(Arrays.toString(array));
-//		System.out.println(firsts);
-//		System.out.println(seconds);
-
 		if ((firsts == 2 && seconds == 3) || (firsts == 3 && seconds == 2)) {
 			fullhouse = true;
 		}
