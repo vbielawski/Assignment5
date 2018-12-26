@@ -50,7 +50,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		 * populates boolean tables with default values, table is used for saving the
 		 * category selected by current player.
 		 */
-		populateTable(N_CATEGORIES, nPlayers);
+		selected = populateTable(N_CATEGORIES, nPlayers);
 		scorecard = new int[N_CATEGORIES][nPlayers];
 
 	}
@@ -58,7 +58,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private void playGame() {
 		/* Play Yahtzee game */
 		int steps = N_SCORING_CATEGORIES * nPlayers;
-//		
+		int category = 0;
 		for (int n = 0; n < N_SCORING_CATEGORIES; n++) {
 			for (int player = 1; player <= nPlayers; player++) {
 				dice = generateDice(N_DICE); // generate initials dice values
@@ -77,7 +77,19 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 //			rollSelected(dice);
 //			display.displayDice(dice);
 				display.printMessage("Select a category for this roll.");
-				int category = display.waitForPlayerToSelectCategory();
+				
+				
+				if (!isAlreadyUpdated(category, player)) {
+					category = display.waitForPlayerToSelectCategory();
+					setCategorySelected(category, player);
+				} else {
+					display.printMessage("Category is already selected, try another.");
+					
+					
+				}
+				
+				//int category = display.waitForPlayerToSelectCategory();
+				
 				// System.out.println(category);
 
 //				if(isAlreadyUpdated(category, player)) {
@@ -88,15 +100,10 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				 * category return integer from YahtzeeConstants interface, and player returns
 				 * index of a player, from 1 to number of players(including)
 				 */
-				while (true) {
-					if (!isAlreadyUpdated(category, player)) {
-						setCategorySelected(category, player);
-					} else {
-						display.printMessage("Category is already selected, try another.");
-						
-					}
-					break;
-				}
+				
+					
+					
+				
 
 				// print2DArray();
 
@@ -251,13 +258,14 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		return false;
 	}
 
-	private void populateTable(int rows, int colomns) {
-		selected = new boolean[rows][colomns];
+	private boolean[][] populateTable(int rows, int colomns) {
+		boolean arr[][] = new boolean[rows][colomns];
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < colomns; j++) {
-				selected[i][j] = false;
+				arr[i][j] = false;
 			}
 		}
+		return arr;
 	}
 
 	private boolean checkCategory(int category, int[] array) {
