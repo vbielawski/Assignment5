@@ -79,9 +79,9 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 				display.printMessage("Select a category for this roll.");
 				
 				
-				if (!isAlreadyUpdated(category, player)) {
+				if (!(isAlreadyUpdated(category, player, selected))) {
 					category = display.waitForPlayerToSelectCategory();
-					setCategorySelected(category, player);
+					setCategorySelected(category, player, selected);
 				} else {
 					display.printMessage("Category is already selected, try another.");
 					
@@ -247,12 +247,12 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 	}
 
-	private void setCategorySelected(int category, int player) {
-		selected[category - 1][player - 1] = true;
+	private void setCategorySelected(int row, int col, boolean[][] arr) {
+		arr[row - 1][col - 1] = true;
 	}
 
-	private boolean isAlreadyUpdated(int category, int player) {
-		if (selected[category - 1][player - 1] == true) {
+	private boolean isAlreadyUpdated(int row, int col, boolean[][] arr) {
+		if (arr[row - 1][col - 1] == true) {
 			return true;
 		}
 		return false;
